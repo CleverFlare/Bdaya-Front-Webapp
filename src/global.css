@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+[dir="rtl"] .rtl-button-style .JoyButton-startDecorator {
+  margin-left: var(--Button-gap);
+  margin-right: unset;
+}
+
+[dir="rtl"] .rtl-button-style .JoyButton-endDecorator {
+  margin-right: var(--Button-gap);
+  margin-left: unset;
+}
+
+[dir="rtl"] .direction-agnostic {
+  direction: ltr;
+}
+
+[dir="ltr"] .direction-agnostic {
+  direction: ltr;
+}
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+  gap: 20px;
+}
+
+.my-masonry-grid_column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  overflow: hidden;
+}

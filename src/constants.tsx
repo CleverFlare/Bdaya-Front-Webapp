@@ -1,0 +1,4 @@
+const SM_VIEWPORT = 480;
+const MD_VIEWPORT = 750;
+
+export { SM_VIEWPORT, MD_VIEWPORT };

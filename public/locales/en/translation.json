@@ -1,0 +1,52 @@
+{
+  "landing-page": {
+    "topbar": {
+      "home": "Home",
+      "about_us": "About Us",
+      "gallery": "Gallery",
+      "tracks": "Tracks",
+      "projects": "Projects",
+      "signin": "Sign in"
+    },
+    "hero-sec": {
+      "title": "We’ll get you from zero to hero",
+      "desc": "Our talented team will take you step by step to your dream career, everything is free, we solely seek students flourish and improvement.",
+      "button-join": "Join Us Now",
+      "button-learn": "Learn More"
+    },
+    "about_us-sec": {
+      "section_title": "About Us",
+      "desc": "Bdaya team is a student activity held since 2015 by some educated ambitious students in an aim to spread knowledge of computer science and its fields and building distinct students scientifically, professionally, and ethically, thus flourishing the student community with knowledge, and creating a civil environment filled with fraternity, collaboration, effective sharing, and reviving the values of collaboration and communication which leads to spreading and solidifying the concept of well-organized teamwork and pursuing the improvement and supporting the sense of creativity and innovation amoung students, and it also works on sharing experiences amoung the students...",
+      "read_more": "Read More"
+    },
+    "founders-sec": {
+      "title": "Founders",
+      "ah_yus_name": "Eng. Ahmed Yusry",
+      "ab_big_name": "Eng. Abdulrahman Bigirmy",
+      "mh_sal_name": "Eng. Muhammad Salah",
+      "ah_yus_major": "Software Engineer",
+      "ab_big_major": "Graphic Designer",
+      "mh_sal_major": "IT"
+    },
+    "tracks-sec": {
+      "title": "Some Of Our Tracks",
+      "card_learn": "learn",
+      "view_all": "View All",
+      "enroll": "Enroll"
+    },
+    "testimonial-sec": {
+      "title": "Testimonial"
+    },
+    "about_us-page": {
+      "title": "Bdaya Team",
+      "history": "Our History",
+      "mission": "Our Mission",
+      "service": "Our Service",
+      "features": "Our Features"
+    },
+    "gallery-page": {
+      "title": "The Gallery"
+    },
+    "footer-text": "This website was created by Bdaya web development team, all rights reserved"
+  }
+}
