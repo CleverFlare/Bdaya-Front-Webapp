@@ -3,8 +3,7 @@ import { Box, IconButton, Stack, Typography } from "@mui/joy";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CloseIcon from "@mui/icons-material/Close";
-import { SxProps } from "@mui/joy/styles/types";
-import { useUpdate } from "../../hooks";
+import { LightboxButton } from "../atoms/LightboxButton";
 
 interface ILightboxProps {
   images: string[];
@@ -103,37 +102,4 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
       </LightboxButton>
     </Box>
   );
-};
-
-interface ILightboxButtonProps {
-  sx?: SxProps;
-  children?: any;
-  onClick?: () => void;
-}
-
-export const LightboxButton: FC<ILightboxButtonProps> = (props) => {
-  const buttonStyle = {
-    "&:hover": {
-      bgcolor: "transparent",
-    },
-    "&:active": {
-      bgcolor: "transparent",
-    },
-  };
-
-  return (
-    <IconButton
-      sx={{ ...buttonStyle, ...(props.sx || {}) }}
-      variant="plain"
-      onClick={props.onClick}
-    >
-      {props.children}
-    </IconButton>
-  );
-};
-
-interface IImageListProps {}
-
-export const ImageList: FC<IImageListProps> = (props) => {
-  return <Stack></Stack>;
 };
