@@ -19,9 +19,11 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
     throw Error(
       `please provide a number between ${0} and ${props.images.length}`
     );
-  const [image, setImage] = useState<number | null>(null);
-  const limit = props.images.length - 1;
 
+  // ===== state =====
+  const [image, setImage] = useState<number | null>(null);
+
+  //====== styles =======
   const rootStyle = {
     position: "fixed",
     left: 0,
@@ -40,7 +42,6 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
     top: "50%",
     transform: "translateY(-50%)",
   };
-
   const toolbarStyle = {
     position: "absolute",
     top: 0,
@@ -48,29 +49,64 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
     padding: 1,
   };
 
-  function getNextImage() {
-    setImage((prev) => {
-      if (props.loop)
-        if (prev === null && (props.init || 0) >= limit) return 0;
-        else if (prev != null && (prev || 0) >= limit) return 0;
+  //======= logic =======
+  type NumberOrNullish = number | null | undefined;
 
-      if (prev != null) return prev + 1;
-      else if (props.init) return props.init + 1;
-      else return 1;
-    });
+  class Logic {
+    constructor(
+      private propVal: NumberOrNullish,
+      private stateVal: NumberOrNullish
+    ) {}
+
+    #limitGate(num: number, prev: number): void {
+      const isInfinite = props.loop === true;
+      const positiveLimit = props.images.length - 1;
+      const negativeLimit = 0;
+      const isAtPositiveLimit = num > positiveLimit;
+      const isAtNegativeLimit = num < negativeLimit;
+      const typeOfMovement = num > prev ? "+" : "-";
+      let valueToBeSet = 0;
+
+      switch (typeOfMovement) {
+        case "+":
+          if (isAtPositiveLimit)
+            valueToBeSet = isInfinite ? negativeLimit : positiveLimit;
+          else valueToBeSet = num;
+          break;
+        case "-":
+          if (isAtNegativeLimit)
+            valueToBeSet = isInfinite ? positiveLimit : negativeLimit;
+          else valueToBeSet = num;
+          break;
+        default:
+          if (isAtPositiveLimit)
+            valueToBeSet = isInfinite ? negativeLimit : positiveLimit;
+          else valueToBeSet = num;
+      }
+
+      return setImage(valueToBeSet);
+    }
+
+    // this higher order function passes either the init prop or the image state to be used
+    #sourceSwitcher(): number {
+      const isAtInit = image === null;
+
+      return isAtInit ? this.propVal || 0 : this.stateVal || 0;
+    }
+
+    getNextImage() {
+      const prevVal = this.#sourceSwitcher();
+      const nextVal = prevVal + 1;
+      this.#limitGate(nextVal, prevVal);
+    }
+
+    getPrevImage() {
+      const prevVal = this.#sourceSwitcher();
+      const nextVal = prevVal - 1;
+      this.#limitGate(nextVal, prevVal);
+    }
   }
-
-  function getPrevImage() {
-    setImage((prev) => {
-      if (props.loop)
-        if (prev === null && (props.init || 0) <= 0) return limit;
-        else if (prev != null && (prev || 0) <= 0) return limit;
-
-      if (prev != null) return prev - 1;
-      else if (props.init) return props.init - 1;
-      else return 0;
-    });
-  }
+  const logic = new Logic(props.init, image);
 
   return (
     <Box sx={rootStyle}>
@@ -79,7 +115,10 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
           <CloseIcon sx={{ color: "white" }} />
         </LightboxButton>
       </Stack>
-      <LightboxButton sx={{ ...arrowStyle, left: 20 }} onClick={getPrevImage}>
+      <LightboxButton
+        sx={{ ...arrowStyle, left: 20 }}
+        onClick={() => logic.getPrevImage()}
+      >
         <ArrowBackIosIcon sx={{ color: "white" }} />
       </LightboxButton>
       {props.images.map((src, index) => {
@@ -102,7 +141,10 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
           />
         );
       })}
-      <LightboxButton sx={{ ...arrowStyle, right: 20 }} onClick={getNextImage}>
+      <LightboxButton
+        sx={{ ...arrowStyle, right: 20 }}
+        onClick={() => logic.getNextImage()}
+      >
         <ArrowForwardIosIcon sx={{ color: "white" }} />
       </LightboxButton>
     </Box>
