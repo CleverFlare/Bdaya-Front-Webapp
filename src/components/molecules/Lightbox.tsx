@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Box, IconButton, Stack, Typography } from "@mui/joy";
+import { Box, Stack } from "@mui/joy";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CloseIcon from "@mui/icons-material/Close";

@@ -9,15 +9,6 @@ import { Loading } from "./components/atoms/Loading";
 
 function App() {
   useOnMount(() => {
-    switch (i18next.language) {
-      case "ar":
-        document.body.setAttribute("dir", "rtl");
-        break;
-      case "en":
-        document.body.setAttribute("dir", "ltr");
-        break;
-    }
-
     console.log(
       "%cWelcome To Bdaya's Console",
       "padding: 5px; color: white; background: linear-gradient(to right, purple, blue); border-radius: 5px"

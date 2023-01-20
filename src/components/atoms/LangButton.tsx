@@ -1,15 +1,10 @@
 import i18next from "i18next";
 import { IconButton } from "@mui/joy";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 interface ILangButtonProps {}
 
 export const LangButton: FC<ILangButtonProps> = (props) => {
-  const [isEn, setIsEn] = useState<boolean>(
-    i18next.language === "en" ? true : false
-  );
-
   function toggleLang() {
-    setIsEn(i18next.language === "en" ? true : false);
     switch (i18next.language) {
       case "en":
         document.body.setAttribute("dir", "rtl");
@@ -22,5 +17,9 @@ export const LangButton: FC<ILangButtonProps> = (props) => {
     }
   }
 
-  return <IconButton onClick={toggleLang}>{isEn ? "AR" : "EN"}</IconButton>;
+  return (
+    <IconButton onClick={toggleLang}>
+      {i18next.language === "en" ? "AR" : "EN"}
+    </IconButton>
+  );
 };
