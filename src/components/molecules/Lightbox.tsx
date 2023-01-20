@@ -15,9 +15,12 @@ interface ILightboxProps {
 
 export const Lightbox: FC<ILightboxProps> = (props) => {
   if (!props.open) return <></>;
+  if ((props.init || 0) >= props.images.length)
+    throw Error(
+      `please provide a number between ${0} and ${props.images.length}`
+    );
   const [image, setImage] = useState<number | null>(null);
   const limit = props.images.length - 1;
-  const isInitLimited = (props.init || 0) <= limit && (props.init || 0) >= 0;
 
   const rootStyle = {
     position: "fixed",
@@ -47,23 +50,25 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
 
   function getNextImage() {
     setImage((prev) => {
-      if (props.loop && (prev || 0) >= limit) return 0;
-      else if ((prev || 0) >= limit) return prev;
+      if (props.loop)
+        if (prev === null && (props.init || 0) >= limit) return 0;
+        else if (prev != null && (prev || 0) >= limit) return 0;
 
       if (prev != null) return prev + 1;
-      else if (props.init && isInitLimited) return props.init + 1;
+      else if (props.init) return props.init + 1;
       else return 1;
     });
   }
 
   function getPrevImage() {
     setImage((prev) => {
-      if (props.loop && (prev || 0) <= 0) return limit;
-      else if ((prev || 0) <= 0) return 0;
+      if (props.loop)
+        if (prev === null && (props.init || 0) <= 0) return limit;
+        else if (prev != null && (prev || 0) <= 0) return limit;
 
       if (prev != null) return prev - 1;
-      else if ((props.init || 1) - 1 > 0) return (props.init || 1) - 1;
-      else return limit;
+      else if (props.init) return props.init - 1;
+      else return 0;
     });
   }
 
@@ -81,7 +86,7 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
         const initImage = props.init;
         let display = "none";
 
-        if (image == null && initImage != null && isInitLimited)
+        if (image == null && initImage != null)
           if (initImage === index) display = "block";
           else display = "none";
         else if (image != null && image === index) display = "block";
