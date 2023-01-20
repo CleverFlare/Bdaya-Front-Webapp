@@ -18,7 +18,7 @@ export const AboutUs: FC<IAboutUsProps> = (props) => {
         </Typography>
         <Box
           component="img"
-          src="https://scontent-hbe1-1.xx.fbcdn.net/v/t39.30808-6/264617042_4962842057083898_5230485186881333981_n.jpg?stp=dst-jpg_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeHf8KCD4quvhH1Di25GIFCimX37dvR3hiiZfft29HeGKH2KSAqIOj2fD2wtof4246uk0MBdxAqYPjNVGOA4r4ss&_nc_ohc=SdnSP1jyoAgAX_Z1-qp&_nc_ht=scontent-hbe1-1.xx&oh=00_AfCcrDEudgw0dpSoy8x0uGvquDzwZ8dlXXIc7aGrsmY3Yw&oe=63C98231"
+          src="https://scontent-hbe1-1.xx.fbcdn.net/v/t39.30808-6/264617042_4962842057083898_5230485186881333981_n.jpg?stp=dst-jpg_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeHf8KCD4quvhH1Di25GIFCimX37dvR3hiiZfft29HeGKH2KSAqIOj2fD2wtof4246uk0MBdxAqYPjNVGOA4r4ss&_nc_ohc=6kcPruD7ZKYAX9vap0x&_nc_ht=scontent-hbe1-1.xx&oh=00_AfCh97ylDWB28Lqmhvhu9vx4LsQ8A5vcoc2UfMjBPb53bQ&oe=63CF70F1"
           sx={{ width: "100%", borderRadius: 10 }}
         />
         <SpecInfo title={t("landing-page.about_us-page.history")}>
