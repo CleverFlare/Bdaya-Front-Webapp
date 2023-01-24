@@ -28,7 +28,6 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
   const MAX_ZOOM = 150;
   const MIN_ZOOM = -50;
   const [image, setImage] = useState<number | null>(null);
-  const [zoom, setZoom] = useState<number>(0);
 
   //====== styles =======
   const rootStyle = {
@@ -65,8 +64,7 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
   class Logic {
     constructor(
       private propVal: NumberOrNullish,
-      private stateVal: NumberOrNullish,
-      private zoom: number
+      private stateVal: NumberOrNullish
     ) {}
 
     #limitGate(num: number, prev: number): void {
@@ -105,54 +103,25 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
       return isAtInit ? this.propVal || 0 : this.stateVal || 0;
     }
 
-    resetZoom(): void {
-      setZoom(0);
-    }
-
     getNextImage() {
       const prevVal = this.#sourceSwitcher();
       const nextVal = prevVal + 1;
       this.#limitGate(nextVal, prevVal);
-      this.resetZoom();
     }
 
     getPrevImage() {
       const prevVal = this.#sourceSwitcher();
       const nextVal = prevVal - 1;
       this.#limitGate(nextVal, prevVal);
-      this.resetZoom();
-    }
-
-    #zoomResolver(num: number): number {
-      if (num >= MAX_ZOOM) return MAX_ZOOM;
-      else if (num <= MIN_ZOOM) return MIN_ZOOM;
-      else return num;
-    }
-
-    zoomIn(num: number) {
-      setZoom((prev) => this.#zoomResolver(prev + num));
-    }
-
-    zoomOut(num: number) {
-      setZoom((prev) => this.#zoomResolver(prev - num));
     }
   }
-  const logic = new Logic(props.init, image, zoom);
+  const logic = new Logic(props.init, image);
 
   return (
     <Box sx={rootStyle}>
       <Stack direction="row-reverse" sx={toolbarStyle}>
         <LightboxButton onClick={props.onClose}>
           <CloseIcon sx={{ color: "white" }} />
-        </LightboxButton>
-        <LightboxButton onClick={() => logic.zoomOut(30)}>
-          <ZoomOutIcon sx={{ color: "white" }} />
-        </LightboxButton>
-        <LightboxButton onClick={() => logic.zoomIn(30)}>
-          <ZoomInIcon sx={{ color: "white" }} />
-        </LightboxButton>
-        <LightboxButton onClick={() => logic.resetZoom()}>
-          <RestartAltIcon sx={{ color: "white" }} />
         </LightboxButton>
       </Stack>
       <LightboxButton
@@ -172,12 +141,7 @@ export const Lightbox: FC<ILightboxProps> = (props) => {
         else if (index === Number(image)) display = true;
 
         return (
-          <LightboxPic
-            key={crypto.randomUUID()}
-            src={src}
-            show={display}
-            zoom={zoom}
-          />
+          <LightboxPic key={crypto.randomUUID()} src={src} show={display} />
         );
       })}
       <LightboxButton
