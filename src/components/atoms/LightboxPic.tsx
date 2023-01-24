@@ -39,19 +39,19 @@ export const LightboxPic: FC<ILightboxPicProps> = (props) => {
 
     if (e.movementX > 0) {
       if (boundingRect.left <= 0) {
-        setXAxis((prev) => prev + e.movementX);
+        setXAxis((prev) => prev + e.movementX / 2);
       }
     } else if (e.movementX < 0) {
       if (boundingRect.right >= window.innerWidth)
-        setXAxis((prev) => prev + e.movementX);
+        setXAxis((prev) => prev + e.movementX / 2);
     }
     if (e.movementY > 0) {
       if (boundingRect.top <= 0) {
-        setYAxis((prev) => prev + e.movementY);
+        setYAxis((prev) => prev + e.movementY / 2);
       }
     } else if (e.movementY < 0) {
       if (boundingRect.bottom >= window.innerHeight)
-        setYAxis((prev) => prev + e.movementY);
+        setYAxis((prev) => prev + e.movementY / 2);
     }
   }
 
@@ -62,6 +62,7 @@ export const LightboxPic: FC<ILightboxPicProps> = (props) => {
 
   function handleMouseUp() {
     if (!picRef.current) return;
+
     picRef.current.removeEventListener("pointermove", handleMouseMove);
   }
 
