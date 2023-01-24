@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function useOnMount(callback: () => any) {
-  useEffect(callback, []);
+  const initMount = useRef(true);
+  useEffect(() => {
+    if (initMount.current === false) return;
+    callback();
+    initMount.current = false;
+  }, []);
 }
 
 export default useOnMount;
