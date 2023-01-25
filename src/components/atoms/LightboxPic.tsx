@@ -6,34 +6,67 @@ interface ILightboxPicProps {
 }
 
 export const LightboxPic: FC<ILightboxPicProps> = (props) => {
-  const picRef = useRef<null | HTMLElement>(null);
+  const [xAxis, setXAxis] = useState<number>(0);
+  const [yAxis, setYAxis] = useState<number>(0);
   const isDisplayed = props.show;
   const rootStyle = {
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    display: isDisplayed ? "flex" : "none",
-    touchAction: "none",
+    minWidth: "0px",
+    maxWidth: "1000px",
+    overflow: "hidden",
+    cursor: "zoom-in",
   };
 
   const imgStyle = {
-    minWidth: "0px",
-    maxWidth: "1000px",
-    touchAction: "none",
+    "--x": `${xAxis}%`,
+    "--y": `${yAxis}%`,
+    display: isDisplayed ? "block" : "none",
   };
+
+  const imgSX = {
+    "--x": `0%`,
+    "--y": `0%`,
+    width: "100%",
+    touchAction: "none",
+    transform: "scale(1)",
+    transformOrigin: `var(--x) var(--y)`,
+    transition: "transform 0.5s",
+    "&:hover": {
+      transform: "scale(2)",
+    },
+  };
+
+  let width: number, height: number, x: number, y: number;
+
+  function handlePointerMove(e: any) {
+    const horizontal = ((e.clientX - x) / width) * 100;
+    const vertical = ((e.clientY - y) / height) * 100;
+
+    if (horizontal >= 0 && horizontal <= 100) setXAxis(horizontal);
+    if (vertical >= 0 && vertical <= 100) setYAxis(vertical);
+  }
+
+  function handlePointerEnter(e: any) {
+    const el = e.target;
+    if (!e.target) return;
+    const size = el.getBoundingClientRect();
+
+    width = size.width;
+    height = size.height;
+    x = size.x;
+    y = size.y;
+
+    el.onpointermove = handlePointerMove;
+  }
 
   return (
     <Box sx={rootStyle}>
       <Box
         component="img"
         src={props.src}
-        sx={imgStyle}
+        sx={imgSX}
+        style={imgStyle}
         draggable={false}
-        ref={picRef}
+        onPointerEnter={handlePointerEnter}
       />
     </Box>
   );
