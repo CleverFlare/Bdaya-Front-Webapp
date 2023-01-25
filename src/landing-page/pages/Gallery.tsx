@@ -32,7 +32,7 @@ export const Gallery: FC<IGalleryProps> = (props) => {
     <>
       <Container
         component={Stack}
-        gap={2}
+        spacing={2}
         sx={{ paddingBlock: 2, paddingBottom: 10 }}
       >
         <Typography level="h2" fontWeight="bold">
