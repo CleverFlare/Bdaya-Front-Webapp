@@ -18,8 +18,14 @@ export const AboutUs: FC<IAboutUsProps> = (props) => {
         </Typography>
         <Box
           component="img"
-          src="https://scontent-hbe1-1.xx.fbcdn.net/v/t39.30808-6/264617042_4962842057083898_5230485186881333981_n.jpg?stp=dst-jpg_s960x960&_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeHf8KCD4quvhH1Di25GIFCimX37dvR3hiiZfft29HeGKH2KSAqIOj2fD2wtof4246uk0MBdxAqYPjNVGOA4r4ss&_nc_ohc=6kcPruD7ZKYAX9vap0x&_nc_ht=scontent-hbe1-1.xx&oh=00_AfCh97ylDWB28Lqmhvhu9vx4LsQ8A5vcoc2UfMjBPb53bQ&oe=63CF70F1"
-          sx={{ width: "100%", borderRadius: 10 }}
+          src="https://wp.salesforce.com/blog/wp-content/uploads/sites/2/2021/03/improve-team-efficiency-productivity-header.jpg"
+          sx={{
+            width: "100%",
+            height: "500px",
+            bgcolor: "gray",
+            borderRadius: 10,
+            objectFit: "cover",
+          }}
         />
         <SpecInfo title={t("landing-page.about_us-page.history")}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ut

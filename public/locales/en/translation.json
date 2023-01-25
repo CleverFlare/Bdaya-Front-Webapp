@@ -1,4 +1,10 @@
 {
+  "components": {
+    "track_card": {
+      "learn": "learn",
+      "details_button": "See Details"
+    }
+  },
   "landing-page": {
     "topbar": {
       "home": "Home",
@@ -30,7 +36,6 @@
     },
     "tracks-sec": {
       "title": "Some Of Our Tracks",
-      "card_learn": "learn",
       "view_all": "View All",
       "enroll": "Enroll"
     },
@@ -46,6 +51,14 @@
     },
     "gallery-page": {
       "title": "The Gallery"
+    },
+    "tracks-page": {
+      "title": "Tracks"
+    },
+    "track_details-page": {
+      "tech": "Technologies Used",
+      "about": "About The Track",
+      "prereq": "Prerequisites"
     },
     "footer-text": "This website was created by Bdaya web development team, all rights reserved"
   }

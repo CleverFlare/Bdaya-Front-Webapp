@@ -1,29 +1,18 @@
-import {
-  AspectRatio,
-  Box,
-  Button,
-  Card,
-  Chip,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/joy";
-import { Stack } from "@mui/system";
+import { Container, Grid, Stack, Typography } from "@mui/joy";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { REGISTER, TRACKS } from "../../routesPaths";
-import { SectionTitle } from "../components/SectionTitle";
 import { TrackCard } from "../components/TrackCard";
 interface ITracksProps {}
 
 export const Tracks: FC<ITracksProps> = (props) => {
   const { t } = useTranslation();
   return (
-    <Box sx={{ paddingBlock: 5 }}>
-      <Container>
-        <SectionTitle>{t("landing-page.tracks-sec.title")}</SectionTitle>
-        <Grid container sx={{ marginTop: 5 }} spacing={2}>
+    <>
+      <Container sx={{ paddingBlock: 2, paddingBottom: 10 }}>
+        <Typography level="h2" fontWeight="bold">
+          {t("landing-page.tracks-page.title")}
+        </Typography>
+        <Grid container sx={{ marginTop: 2, marginInline: "auto" }} spacing={2}>
           <Grid md={4} sm={6} xs={12}>
             <TrackCard
               title="Web Development"
@@ -83,20 +72,7 @@ export const Tracks: FC<ITracksProps> = (props) => {
             />
           </Grid>
         </Grid>
-        <Stack
-          direction="row"
-          justifyContent="center"
-          spacing={1}
-          sx={{ marginTop: 3 }}
-        >
-          <Button component={Link} to={TRACKS}>
-            {t("landing-page.tracks-sec.view_all")}
-          </Button>
-          <Button component={Link} to={REGISTER} variant="outlined">
-            {t("landing-page.tracks-sec.enroll")}
-          </Button>
-        </Stack>
       </Container>
-    </Box>
+    </>
   );
 };

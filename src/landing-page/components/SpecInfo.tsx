@@ -1,13 +1,15 @@
 import { Stack, Typography } from "@mui/joy";
-import { FC } from "react";
+import { SxProps } from "@mui/material";
+import { FC, ReactNode } from "react";
 interface ISpecInfoProps {
   title: string;
-  children: string;
+  children: string | ReactNode | ReactNode[];
+  sx?: SxProps;
 }
 
 export const SpecInfo: FC<ISpecInfoProps> = (props) => {
   return (
-    <Stack spacing={2}>
+    <Stack spacing={1} sx={props.sx}>
       <Typography level="h3" fontWeight="bold">
         {props.title}
       </Typography>

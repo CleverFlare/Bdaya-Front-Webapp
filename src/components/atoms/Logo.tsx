@@ -11,5 +11,5 @@ export const Logo: FC<ILogoProps> = (props) => {
     height: props.size || props.height || 40,
     width: props.size || props.width || "unset",
   };
-  return <Box component="img" src="Bdaya Logo 1.png" sx={style} />;
+  return <Box component="img" src="../Bdaya Logo 1.png" sx={style} />;
 };

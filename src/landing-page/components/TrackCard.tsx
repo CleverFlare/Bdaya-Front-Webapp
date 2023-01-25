@@ -1,16 +1,14 @@
-import { AspectRatio, Box, Card, Chip, Stack, Typography } from "@mui/joy";
+import { AspectRatio, Box, Button, Card, Stack, Typography } from "@mui/joy";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-
-type ChipInfo = {
-  name: string;
-  src?: string;
-};
+import { Link } from "react-router-dom";
+import { TechDetails, TechList } from "./TechList";
 
 interface ITrackCardProps {
   src?: string;
   title: string;
-  tech: ChipInfo[];
+  tech: TechDetails[];
+  to: string;
 }
 
 export const TrackCard: FC<ITrackCardProps> = (props) => {
@@ -33,20 +31,20 @@ export const TrackCard: FC<ITrackCardProps> = (props) => {
           alt=""
         />
       </AspectRatio>
-      <Stack spacing={1}>
+      <Stack spacing={2}>
         <Typography fontWeight="lg">{props.title}</Typography>
-        <Stack direction="row" gap={0.5} flexWrap="wrap" sx={{ width: "100%" }}>
-          <Typography>{t("landing-page.tracks-sec.card_learn")}</Typography>
-          {props.tech.map(({ name, src }) => (
-            <Chip
-              key={crypto.randomUUID()}
-              size="sm"
-              onClick={src ? () => redirectToInfo(src) : undefined}
-            >
-              {name}
-            </Chip>
-          ))}
+        <Stack
+          direction="row"
+          spacing={0.5}
+          flexWrap="wrap"
+          sx={{ width: "100%" }}
+        >
+          <Typography>{t("components.track_card.learn")}</Typography>
+          <TechList list={props.tech} />
         </Stack>
+        <Button component={Link} to={props.to}>
+          {t("components.track_card.details_button")}
+        </Button>
       </Stack>
     </Card>
   );

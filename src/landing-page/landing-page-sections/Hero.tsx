@@ -44,7 +44,7 @@ export const Hero: FC<IHeroProps> = (props) => {
             <Typography level="body1">
               {t("landing-page.hero-sec.desc")}
             </Typography>
-            <Stack direction="row" gap={1}>
+            <Stack direction="row" spacing={1}>
               <Button component={Link} to={REGISTER}>
                 {t("landing-page.hero-sec.button-join")}
               </Button>

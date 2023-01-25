@@ -16,7 +16,7 @@ export const AboutUs: FC<IAboutUsProps> = (props) => {
             {t("landing-page.about_us-sec.section_title")}
           </Typography>
         </Stack>
-        <Typography sx={{ marginTop: 1 }}>
+        <Typography sx={{ marginTop: 5 }}>
           {t("landing-page.about_us-sec.desc")}{" "}
           <Link
             component={RouterLink}

@@ -12,10 +12,13 @@ import {
   REGISTER,
   SIGNIN,
   TRACKS,
+  TRACK_DETAILS,
 } from "../routesPaths";
 import { AboutUs } from "./pages/AboutUs";
 import { Gallery } from "./pages/Gallery";
 import { ComingSoon } from "./pages/ComingSoon";
+import { Tracks } from "./pages/Tracks";
+import { TrackDetails } from "./pages/TrackDetails";
 
 interface ILandingPageProps {}
 
@@ -33,7 +36,8 @@ export const LandingPage: FC<ILandingPageProps> = (props) => {
         <Route path="/" element={<HomePage />} />
         <Route path={ABOUT_US} element={<AboutUs />} />
         <Route path={GALLERY} element={<Gallery />} />
-        <Route path={TRACKS} element={<ComingSoon />} />
+        <Route path={TRACKS} element={<Tracks />} />
+        <Route path={TRACK_DETAILS} element={<TrackDetails />} />
         <Route path={PROJECTS} element={<ComingSoon />} />
         <Route path={SIGNIN} element={<ComingSoon />} />
         <Route path={REGISTER} element={<ComingSoon />} />

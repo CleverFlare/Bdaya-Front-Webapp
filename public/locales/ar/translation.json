@@ -1,4 +1,10 @@
 {
+  "components": {
+    "track_card": {
+      "learn": "تعلم",
+      "details_button": "رؤية التفاصيل"
+    }
+  },
   "landing-page": {
     "topbar": {
       "home": "الرئيسية",
@@ -46,6 +52,14 @@
     },
     "gallery-page": {
       "title": "معرض الصور"
+    },
+    "tracks-page": {
+      "title": "المسارات"
+    },
+    "track_details-page": {
+      "tech": "التكنولوجيا المستخدمة",
+      "about": "معلومات عن المسار",
+      "prereq": "المتطلبات"
     },
     "footer-text": "تم إنشاء هذا الموقع بواسطة فريق تطوير المواقع الخاص بتيم بداية ، جميع الحقوق محفوظة"
   }

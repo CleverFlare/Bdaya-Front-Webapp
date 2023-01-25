@@ -1,11 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import i18next from "i18next";
-import Main from "./routes/Home";
 import "./i18n";
 import { Suspense } from "react";
 import { LandingPage } from "./landing-page";
 import { useOnMount } from "./hooks";
 import { Loading } from "./components/atoms/Loading";
+import { ScrollToTop } from "./components/atoms/ScrollToTop";
 
 function App() {
   useOnMount(() => {
@@ -22,6 +21,7 @@ function App() {
   return (
     <>
       <Suspense fallback={<Loading />}>
+        <ScrollToTop />
         <Routes>
           <Route path="/*" element={<LandingPage />} />
         </Routes>
