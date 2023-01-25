@@ -59,9 +59,10 @@ export const Hero: FC<IHeroProps> = (props) => {
               animationData={LearningLottie}
               loop
               sx={{
-                "& svg g:first-child g:first-child path:nth-child(1)": {
-                  fill: bgcolor,
-                },
+                "& svg > g:first-of-type > g:first-of-type path:nth-of-type(1)":
+                  {
+                    fill: bgcolor,
+                  },
               }}
             ></Box>
           </Grid>
