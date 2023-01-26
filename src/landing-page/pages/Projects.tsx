@@ -27,16 +27,16 @@ export const Projects: FC<IProjectsProps> = (props) => {
         />
         <Grid container spacing={2}>
           <Grid md={4} sm={6} xs={12}>
-            <ProjectCard id="sdfasd" />
+            <ProjectCard id="Web Dev" />
           </Grid>
           <Grid md={4} sm={6} xs={12}>
-            <ProjectCard id="sdfasd" />
+            <ProjectCard id="Graphic Design" />
           </Grid>
           <Grid md={4} sm={6} xs={12}>
-            <ProjectCard id="sdfasd" />
+            <ProjectCard id="Game Dev" />
           </Grid>
           <Grid md={4} sm={6} xs={12}>
-            <ProjectCard id="sdfasd" />
+            <ProjectCard id="C# Dev" />
           </Grid>
         </Grid>
       </Container>

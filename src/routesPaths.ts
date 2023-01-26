@@ -3,5 +3,6 @@ export const GALLERY: string = "/gallery";
 export const TRACKS: string = "/tracks";
 export const TRACK_DETAILS: string = "/tracks/:id";
 export const PROJECTS: string = "/projects";
+export const PROJECTS_DETAILS: string = "/projects/:id";
 export const SIGNIN: string = "/signin";
 export const REGISTER: string = "/register";

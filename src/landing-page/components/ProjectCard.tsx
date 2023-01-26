@@ -60,6 +60,7 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
                   overflow: "hidden",
                   display: "block",
                 }}
+                state={{ id: props.id }}
               >
                 Landscape
               </Link>
