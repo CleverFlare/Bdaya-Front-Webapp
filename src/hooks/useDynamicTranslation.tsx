@@ -1,17 +1,15 @@
 import i18next from "i18next";
-
-interface LangSpecs {
-  ar: string;
-  en: string;
-}
+import { useEffect } from "react";
 
 function useDynamicTranslation() {
-  return function (specs: LangSpecs) {
+  return function (ar: any, en: any) {
     switch (i18next.language) {
       case "ar":
-        return specs.ar;
+        return ar;
       case "en":
-        return specs.en;
+        return en;
+      default:
+        return en;
     }
   };
 }

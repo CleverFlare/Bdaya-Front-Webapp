@@ -8,16 +8,33 @@ import {
   Typography,
 } from "@mui/joy";
 import { SpecInfo } from "../components/SpecInfo";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { ImageCover } from "../components/ImageCover";
 import { useTranslation } from "react-i18next";
 import NewReleasesIcon from "@mui/icons-material/NewReleases";
 import { TechList } from "../components/TechList";
 import { BackButton } from "../../components/atoms/BackButton";
+import { useLocation, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import useDynamicTranslation from "../../hooks/useDynamicTranslation";
 interface ITrackDetailsProps {}
 
 export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
+  const { id } = useParams();
+
   const { t } = useTranslation();
+
+  const dynamicTranslation = useDynamicTranslation();
+
+  const tracks = useSelector((state: RootState) => state.tracks.value);
+
+  let track = tracks.find((track) => String(track.id) === id);
+
+  useEffect(() => {
+    console.log(track);
+  }, [track]);
+
   return (
     <>
       <Container
@@ -28,48 +45,25 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
         <Stack direction="row" gap={2}>
           <BackButton />
           <Typography level="h2" fontWeight="bold">
-            Track's Name
+            {track?.name || ""}
           </Typography>
         </Stack>
         <ImageCover src="https://www.ncertbooks.guru/wp-content/uploads/2022/05/Course-details.png" />
         <Stack direction="row" gap={1}>
           <Typography>{t("landing-page.track_details-page.tech")}</Typography>
-          <TechList
-            list={[
-              {
-                name: "technology",
-                src: "https://en.wikipedia.org/wiki/Technology",
-              },
-              {
-                name: "technology",
-                src: "https://en.wikipedia.org/wiki/Technology",
-              },
-              {
-                name: "technology",
-                src: "https://en.wikipedia.org/wiki/Technology",
-              },
-            ]}
-          />
+          <TechList list={track?.tech || []} />
         </Stack>
         <SpecInfo title={t("landing-page.track_details-page.about")}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
-          adipisci sit iste facilis. Cumque, accusamus aspernatur. Natus aperiam
-          magnam alias, dolore itaque vitae ea reprehenderit fuga sapiente,
-          neque animi accusamus. Sequi odio illo vel placeat totam eveniet
-          reiciendis? Non autem eaque temporibus officia, provident minus
-          aliquid ad! Fugit aperiam provident ab vel commodi cupiditate ad, iste
-          voluptatum amet nulla saepe! Illum ipsum, enim ullam officia hic unde
-          nulla. Perferendis eius exercitationem doloremque qui, reprehenderit
-          molestias repudiandae fugiat eveniet harum iure ducimus earum alias
-          est, tempora minus aperiam, sed saepe rem.
+          {dynamicTranslation(track?.detailsAr || "", track?.detailsEn || "")}
         </SpecInfo>
         <SpecInfo title={t("landing-page.track_details-page.prereq")}>
           <List>
-            <ListItemWidthDec>prerequisite</ListItemWidthDec>
-            <ListItemWidthDec>prerequisite</ListItemWidthDec>
-            <ListItemWidthDec>prerequisite</ListItemWidthDec>
-            <ListItemWidthDec>prerequisite</ListItemWidthDec>
-            <ListItemWidthDec>prerequisite</ListItemWidthDec>
+            {dynamicTranslation(
+              track?.prereqAr || [],
+              track?.prereqEn || []
+            ).map((content: string) => (
+              <ListItemWidthDec>{content}</ListItemWidthDec>
+            ))}
           </List>
         </SpecInfo>
       </Container>

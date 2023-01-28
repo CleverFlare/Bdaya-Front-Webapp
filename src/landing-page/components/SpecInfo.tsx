@@ -13,7 +13,7 @@ export const SpecInfo: FC<ISpecInfoProps> = (props) => {
       <Typography level="h3" fontWeight="bold">
         {props.title}
       </Typography>
-      <Typography>{props.children}</Typography>
+      <Typography component="div">{props.children}</Typography>
     </Stack>
   );
 };

@@ -17,7 +17,7 @@ const initialState: TestimonialState = {
 };
 
 export const counterSlice = createSlice({
-  name: "counter",
+  name: "testimonials",
   initialState,
   reducers: {},
 });

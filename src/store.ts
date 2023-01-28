@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import testimonial from "./slices/testimonial";
+import tracks from "./slices/tracks";
 
 export const store = configureStore({
   reducer: {
     testimonials: testimonial,
+    tracks: tracks,
   },
 });
 

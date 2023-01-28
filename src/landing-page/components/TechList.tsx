@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export type TechDetails = {
   name: string;
-  src?: string;
+  infoUrl?: string;
 };
 
 interface ITechListProps {
@@ -15,13 +15,13 @@ export const TechList: FC<ITechListProps> = (props) => {
     window.open(href, "_blank");
   }
   return (
-    <Stack direction="row" gap={1}>
-      {props.list.map(({ name, src }) => (
+    <Stack direction="row" gap={0.5} flexWrap="wrap">
+      {props.list.map(({ name, infoUrl }) => (
         <Chip
           key={crypto.randomUUID()}
           size="sm"
           variant="outlined"
-          onClick={src ? () => redirectToInfo(src) : undefined}
+          onClick={infoUrl ? () => redirectToInfo(infoUrl) : undefined}
         >
           {name}
         </Chip>

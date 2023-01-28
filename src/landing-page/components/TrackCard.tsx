@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { TechDetails, TechList } from "./TechList";
 
 interface ITrackCardProps {
+  id: string | number;
   src?: string;
   title: string;
   tech: TechDetails[];
-  to: string;
 }
 
 export const TrackCard: FC<ITrackCardProps> = (props) => {
@@ -33,14 +33,14 @@ export const TrackCard: FC<ITrackCardProps> = (props) => {
           <Typography>{t("components.track_card.learn")}</Typography>
           <TechList
             list={[
-              ...props.tech,
+              ...props.tech.slice(0, 2),
               {
                 name: "And More...",
               },
             ]}
           />
         </Stack>
-        <Button component={Link} to={props.to}>
+        <Button component={Link} to={`/tracks/${props.id}`}>
           {t("components.track_card.details_button")}
         </Button>
       </Stack>
