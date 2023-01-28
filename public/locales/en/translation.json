@@ -60,6 +60,10 @@
       "about": "About The Track",
       "prereq": "Prerequisites"
     },
+    "projects-page": {
+      "title": "Projects",
+      "categories": "Categories"
+    },
     "footer-text": "This website was created by Bdaya web development team, all rights reserved"
   }
 }

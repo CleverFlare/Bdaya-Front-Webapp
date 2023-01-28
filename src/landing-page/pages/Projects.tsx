@@ -1,10 +1,12 @@
 import { Card, Chip, Container, Grid, Stack, Typography } from "@mui/joy";
 import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ProjectCard } from "../components/ProjectCard";
 import { TracksCategories } from "../components/TracksCategories";
 interface IProjectsProps {}
 
 export const Projects: FC<IProjectsProps> = (props) => {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<null | string>(null);
 
   function handleSelectCategory(category: string) {
@@ -19,7 +21,7 @@ export const Projects: FC<IProjectsProps> = (props) => {
         sx={{ paddingBlock: 2, paddingBottom: 10 }}
       >
         <Typography level="h2" fontWeight="bold">
-          Projects
+          {t("landing-page.projects-page.title")}
         </Typography>
         <TracksCategories
           list={["Front-End", "Back-End", "C#", "Graphic Design"]}

@@ -4,12 +4,14 @@ import CheckIcon from "@mui/icons-material/Check";
 import { FC, useState } from "react";
 import { FreeMode } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
+import { useTranslation } from "react-i18next";
 interface ITracksCategoriesProps {
   list?: string[];
   onSelect?: (category: string) => void;
 }
 
 export const TracksCategories: FC<ITracksCategoriesProps> = (props) => {
+  const { t } = useTranslation();
   const categories = ["All", ...(props.list || [])];
   const [selected, setSelected] = useState<string>(categories[0]);
 
@@ -21,7 +23,7 @@ export const TracksCategories: FC<ITracksCategoriesProps> = (props) => {
   return (
     <Stack spacing={1}>
       <Typography level="body3" textTransform="uppercase" fontWeight="lg">
-        categories
+        {t("landing-page.projects-page.categories")}
       </Typography>
       <Box
         component={Swiper}
