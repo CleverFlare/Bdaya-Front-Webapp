@@ -5,6 +5,8 @@ import App from "./App";
 import "./global.css";
 import "@fontsource/public-sans";
 import { CssVarsProvider, extendTheme, Theme } from "@mui/joy";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 const theme = extendTheme({
   colorSchemes: {
@@ -43,10 +45,12 @@ const theme = extendTheme({
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <CssVarsProvider theme={theme} defaultMode="system">
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </CssVarsProvider>
+    <Provider store={store}>
+      <CssVarsProvider theme={theme} defaultMode="system">
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CssVarsProvider>
+    </Provider>
   </React.StrictMode>
 );
