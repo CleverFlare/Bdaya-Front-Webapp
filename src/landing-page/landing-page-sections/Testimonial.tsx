@@ -15,9 +15,14 @@ import "swiper/css/navigation";
 import { SectionTitle } from "../components/SectionTitle";
 import { TestimonialCard } from "../components/TestimonialCard";
 import { Navigation } from "swiper";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 interface ITestimonialProps {}
 
 export const Testimonial: FC<ITestimonialProps> = (props) => {
+  const testimonials = useSelector(
+    (state: RootState) => state.testimonials.value
+  );
   const { t } = useTranslation();
 
   const responsive = {
@@ -45,67 +50,20 @@ export const Testimonial: FC<ITestimonialProps> = (props) => {
           modules={[Navigation]}
           spaceBetween={50}
           breakpoints={responsive}
-          onSlideChange={() => {}}
-          onSwiper={(swiper) => {}}
           navigation
           loop
           className="direction-agnostic"
         >
-          <SwiperSlide>
-            <TestimonialCard
-              src="https://cdn.pixabay.com/photo/2021/06/11/12/26/woman-6328478_1280.jpg"
-              author="Scarlet James"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a
-              harum velit, magnam explicabo quisquam perspiciatis vel iusto enim
-              iste. Ex, nulla cumque. Repudiandae iste excepturi molestias.
-              Nulla, magni? Tempora.
-            </TestimonialCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard
-              src="https://cdn.pixabay.com/photo/2021/06/11/12/26/woman-6328478_1280.jpg"
-              author="Scarlet James"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a
-              harum velit, magnam explicabo quisquam perspiciatis vel iusto enim
-              iste. Ex, nulla cumque. Repudiandae iste excepturi molestias.
-              Nulla, magni? Tempora.
-            </TestimonialCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard
-              src="https://cdn.pixabay.com/photo/2021/06/11/12/26/woman-6328478_1280.jpg"
-              author="Scarlet James"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a
-              harum velit, magnam explicabo quisquam perspiciatis vel iusto enim
-              iste. Ex, nulla cumque. Repudiandae iste excepturi molestias.
-              Nulla, magni? Tempora.
-            </TestimonialCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard
-              src="https://cdn.pixabay.com/photo/2021/06/11/12/26/woman-6328478_1280.jpg"
-              author="Scarlet James"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a
-              harum velit, magnam explicabo quisquam perspiciatis vel iusto enim
-              iste. Ex, nulla cumque. Repudiandae iste excepturi molestias.
-              Nulla, magni? Tempora.
-            </TestimonialCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard
-              src="https://cdn.pixabay.com/photo/2021/06/11/12/26/woman-6328478_1280.jpg"
-              author="Scarlet James"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore a
-              harum velit, magnam explicabo quisquam perspiciatis vel iusto enim
-              iste. Ex, nulla cumque. Repudiandae iste excepturi molestias.
-              Nulla, magni? Tempora.
-            </TestimonialCard>
-          </SwiperSlide>
+          {testimonials.map((testimonial) => (
+            <SwiperSlide>
+              <TestimonialCard
+                src={testimonial.pfp || undefined}
+                author={testimonial.author}
+              >
+                {testimonial.body}
+              </TestimonialCard>
+            </SwiperSlide>
+          ))}
         </Box>
       </Container>
     </Box>

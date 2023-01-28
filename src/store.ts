@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import testimonial from "./slices/testimonial";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    testimonials: testimonial,
+  },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
