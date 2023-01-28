@@ -54,11 +54,12 @@ export const Testimonial: FC<ITestimonialProps> = (props) => {
           loop
           className="direction-agnostic"
         >
-          {testimonials.map((testimonial) => (
-            <SwiperSlide>
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={`testimonial ${index}`}>
               <TestimonialCard
                 src={testimonial.pfp || undefined}
                 author={testimonial.author}
+                track={testimonial.track}
               >
                 {testimonial.body}
               </TestimonialCard>

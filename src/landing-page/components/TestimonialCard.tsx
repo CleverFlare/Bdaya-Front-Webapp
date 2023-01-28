@@ -5,6 +5,7 @@ import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 interface ITestimonialCardProps {
   children: string;
   author: string;
+  track: string;
   src?: string;
 }
 
@@ -35,7 +36,7 @@ export const TestimonialCard: FC<ITestimonialCardProps> = (props) => {
             {props.author}
           </Typography>
           <Typography level="body2" color="neutral" fontWeight="bold">
-            Front-End Member
+            {props.track} Member
           </Typography>
         </Stack>
       </Stack>

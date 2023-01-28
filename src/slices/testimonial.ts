@@ -4,6 +4,7 @@ import { dummyTestimonials } from "../data/dummyTestimonials";
 type Testimonial = {
   pfp: string | null;
   author: string;
+  track: string;
   body: string;
 };
 
