@@ -5,13 +5,15 @@ interface LangSpecs {
   en: string;
 }
 
-function useDynamicTranslation(specs: LangSpecs) {
-  switch (i18next.language) {
-    case "ar":
-      return specs.ar;
-    case "en":
-      return specs.en;
-  }
+function useDynamicTranslation() {
+  return function (specs: LangSpecs) {
+    switch (i18next.language) {
+      case "ar":
+        return specs.ar;
+      case "en":
+        return specs.en;
+    }
+  };
 }
 
 export default useDynamicTranslation;

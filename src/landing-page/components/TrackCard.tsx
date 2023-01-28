@@ -17,12 +17,8 @@ export const TrackCard: FC<ITrackCardProps> = (props) => {
   const defaultImage =
     "https://thumbs.dreamstime.com/b/zig-zag-tire-track-black-gray-background-eps-38949703.jpg";
 
-  function redirectToInfo(href: string) {
-    window.open(href, "_blank");
-  }
-
   return (
-    <Card variant="outlined" className="direction-agnostic">
+    <Card variant="outlined">
       <AspectRatio sx={{ marginBottom: 2 }}>
         <Box
           component="img"
@@ -33,14 +29,16 @@ export const TrackCard: FC<ITrackCardProps> = (props) => {
       </AspectRatio>
       <Stack spacing={2}>
         <Typography fontWeight="lg">{props.title}</Typography>
-        <Stack
-          direction="row"
-          spacing={0.5}
-          flexWrap="wrap"
-          sx={{ width: "100%" }}
-        >
+        <Stack direction="row" gap={0.5} flexWrap="wrap" sx={{ width: "100%" }}>
           <Typography>{t("components.track_card.learn")}</Typography>
-          <TechList list={props.tech} />
+          <TechList
+            list={[
+              ...props.tech,
+              {
+                name: "And More...",
+              },
+            ]}
+          />
         </Stack>
         <Button component={Link} to={props.to}>
           {t("components.track_card.details_button")}

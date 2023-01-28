@@ -12,6 +12,7 @@ import { Stack } from "@mui/system";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import useDynamicTranslation from "../../hooks/useDynamicTranslation";
 import { REGISTER, TRACKS } from "../../routesPaths";
 import { SectionTitle } from "../components/SectionTitle";
 import { TrackCard } from "../components/TrackCard";
@@ -19,6 +20,7 @@ interface ITracksProps {}
 
 export const Tracks: FC<ITracksProps> = (props) => {
   const { t } = useTranslation();
+  const dynamicTranslation = useDynamicTranslation();
   return (
     <Box sx={{ paddingBlock: 5 }}>
       <Container>
@@ -41,7 +43,6 @@ export const Tracks: FC<ITracksProps> = (props) => {
                   name: "JavaScript",
                   src: "https://en.wikipedia.org/wiki/JavaScript",
                 },
-                { name: "and more..." },
               ]}
               to="/tracks/web-development"
             />
@@ -59,7 +60,6 @@ export const Tracks: FC<ITracksProps> = (props) => {
                   name: "Illustrator",
                   src: "https://en.wikipedia.org/wiki/Adobe_Illustrator",
                 },
-                { name: "and more..." },
               ]}
               to="/tracks/graphic-design"
             />
@@ -77,7 +77,6 @@ export const Tracks: FC<ITracksProps> = (props) => {
                   name: "C# Language",
                   src: "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)",
                 },
-                { name: "and more..." },
               ]}
               to="/tracks/game-development"
             />
