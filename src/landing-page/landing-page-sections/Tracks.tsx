@@ -85,7 +85,7 @@ export const Tracks: FC<ITracksProps> = (props) => {
         <Stack
           direction="row"
           justifyContent="center"
-          spacing={1}
+          gap={1}
           sx={{ marginTop: 3 }}
         >
           <Button component={Link} to={TRACKS}>
