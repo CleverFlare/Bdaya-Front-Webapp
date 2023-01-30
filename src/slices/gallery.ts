@@ -1,24 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { projects } from "../data/dummyProjects";
-
-type Project = {
-  id: number | string;
-  title: string;
-  author: string;
-  track: number;
-  images: string[];
-};
+import { gallery } from "../data/dummyGallery";
 
 export interface ProjectsState {
-  value: Project[];
+  value: string[];
 }
 
 const initialState: ProjectsState = {
-  value: projects,
+  value: gallery,
 };
 
 export const counterSlice = createSlice({
-  name: "projects",
+  name: "gallery",
   initialState,
   reducers: {},
 });

@@ -6,9 +6,12 @@ import { GalleryImg } from "../components/GalleryImg";
 import { Lightbox } from "../../components/molecules/Lightbox";
 import { useUpdate } from "../../hooks";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 interface IGalleryProps {}
 
 export const Gallery: FC<IGalleryProps> = (props) => {
+  const gallery = useSelector((state: RootState) => state.gallery.value);
   const { t } = useTranslation();
   const [selectedPicture, setSelectedPicture] = useState<number>(0);
   const [openLightbox, setOpenLightbox] = useState<boolean>(false);
@@ -40,7 +43,7 @@ export const Gallery: FC<IGalleryProps> = (props) => {
         </Typography>
         <Lightbox
           open={openLightbox}
-          images={photos}
+          images={gallery}
           init={selectedPicture}
           onClose={handleCloseLightbox}
           loop
@@ -50,10 +53,10 @@ export const Gallery: FC<IGalleryProps> = (props) => {
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          {photos.map((img: any, index: number) => (
+          {gallery.map((img: any, index: number) => (
             <GalleryImg
               src={img}
-              key={crypto.randomUUID()}
+              key={`Gallery Picture ${index}`}
               onClick={() => handlePreviewPic(index)}
             />
           ))}

@@ -1,4 +1,5 @@
 import { configureStore, createAction } from "@reduxjs/toolkit";
+import gallery from "./slices/gallery";
 import projects from "./slices/projects";
 import testimonial from "./slices/testimonial";
 import tracks from "./slices/tracks";
@@ -10,6 +11,7 @@ export const store = configureStore({
     testimonials: testimonial,
     tracks: tracks,
     projects: projects,
+    gallery: gallery,
   },
 });
 
