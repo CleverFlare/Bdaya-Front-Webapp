@@ -57,8 +57,8 @@ export const Projects: FC = () => {
           onSelect={handleSelectCategory}
         />
         <Grid container spacing={2}>
-          {filteredProjects.map((project) => (
-            <Grid md={4} sm={6} xs={12}>
+          {filteredProjects.map((project, index) => (
+            <Grid md={4} sm={6} xs={12} key={`Project ${index}`}>
               <ProjectCard
                 title={project.title}
                 author={project.author}
