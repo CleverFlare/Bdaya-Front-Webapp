@@ -1,6 +1,7 @@
 import {
   Chip,
   Container,
+  Divider,
   List,
   ListItem,
   ListItemDecorator,
@@ -31,10 +32,6 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
 
   let track = tracks.find((track) => String(track.id) === id);
 
-  useEffect(() => {
-    console.log(track);
-  }, [track]);
-
   return (
     <>
       <Container
@@ -48,9 +45,10 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
             {track?.name || ""}
           </Typography>
         </Stack>
-        <ImageCover src="https://www.ncertbooks.guru/wp-content/uploads/2022/05/Course-details.png" />
+        <ImageCover src={track?.cover || ""} />
         <Stack direction="row" gap={1}>
           <Typography>{t("landing-page.track_details-page.tech")}</Typography>
+          <Divider orientation="vertical" />
           <TechList list={track?.tech || []} />
         </Stack>
         <SpecInfo title={t("landing-page.track_details-page.about")}>
@@ -62,7 +60,9 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
               track?.prereqAr || [],
               track?.prereqEn || []
             ).map((content: string) => (
-              <ListItemWidthDec>{content}</ListItemWidthDec>
+              <ListItemWidthDec key={`preqrequisite ${crypto.randomUUID()}`}>
+                {content}
+              </ListItemWidthDec>
             ))}
           </List>
         </SpecInfo>

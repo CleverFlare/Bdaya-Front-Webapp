@@ -21,7 +21,7 @@ export const Tracks: FC<ITracksProps> = (props) => {
         <SectionTitle>{t("landing-page.tracks-sec.title")}</SectionTitle>
         <Grid container sx={{ marginTop: 5 }} spacing={2}>
           {tracks.map((track) => (
-            <Grid md={4} sm={6} xs={12}>
+            <Grid md={4} sm={6} xs={12} key={`Track ${track.id}`}>
               <TrackCard
                 title={track.name}
                 src={track.thumbnail}

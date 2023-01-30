@@ -17,7 +17,7 @@ export const Tracks: FC<ITracksProps> = (props) => {
         </Typography>
         <Grid container sx={{ marginTop: 2, marginInline: "auto" }} spacing={2}>
           {tracks.map((track) => (
-            <Grid md={4} sm={6} xs={12}>
+            <Grid md={4} sm={6} xs={12} key={`Track ${track.id}`}>
               <TrackCard
                 title={track.name}
                 src={track.thumbnail}

@@ -10,6 +10,7 @@ type Tech = {
 type Track = {
   id: string | number;
   name: string;
+  cover: string;
   thumbnail: string;
   tech: Tech[];
   detailsAr: string;

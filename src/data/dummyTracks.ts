@@ -2,6 +2,8 @@ export const tracks = [
   {
     id: 1,
     name: "Beginner Front-End",
+    cover:
+      "https://media.istockphoto.com/id/1257967158/vector/computer-programmeing-vector-concept-metaphor.jpg?s=612x612&w=0&k=20&c=Yd54Oy7mKfWZXJROe0jxmf9hgWJqmpOSoZQ0jTD9kqk=",
     thumbnail:
       "https://media.istockphoto.com/id/1257967158/vector/computer-programmeing-vector-concept-metaphor.jpg?s=612x612&w=0&k=20&c=Yd54Oy7mKfWZXJROe0jxmf9hgWJqmpOSoZQ0jTD9kqk=",
     tech: [
@@ -32,6 +34,8 @@ export const tracks = [
   {
     id: 2,
     name: "Advanced Front-End",
+    coever:
+      "https://cdn.dribbble.com/users/1152627/screenshots/7024080/shot_21_agustus_4x.png",
     thumbnail:
       "https://cdn.dribbble.com/users/1152627/screenshots/7024080/shot_21_agustus_4x.png",
     tech: [
@@ -70,6 +74,8 @@ export const tracks = [
   {
     id: 3,
     name: "Graphic Design",
+    cover:
+      "https://visme.co/blog/wp-content/uploads/2021/10/what-is-graphic-design-header-1200.png",
     thumbnail:
       "https://visme.co/blog/wp-content/uploads/2021/10/what-is-graphic-design-header-1200.png",
     tech: [

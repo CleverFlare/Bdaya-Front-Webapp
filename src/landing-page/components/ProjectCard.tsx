@@ -19,7 +19,7 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
   const tempSrc =
     "https://images.unsplash.com/photo-1612441804231-77a36b284856?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHx8&w=1000&q=80";
   return (
-    <Card sx={{ aspectRatio: "1.5 / 1" }}>
+    <Card sx={{ aspectRatio: "1.5 / 1" }} className="direction-agnostic">
       <CardCover>
         <Box component="img" src={tempSrc}></Box>
       </CardCover>
