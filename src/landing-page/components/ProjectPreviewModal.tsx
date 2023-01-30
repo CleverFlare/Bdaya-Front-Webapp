@@ -43,7 +43,20 @@ export const ProjectPreviewModal: FC<IProjectPreviewModalProps> = (props) => {
           outline: "none",
         }}
       >
-        <ModalClose sx={{ top: 5, right: 5, width: "min-content" }} />
+        <ModalClose
+          sx={{
+            top: 5,
+            [`[dir="rtl"] &`]: {
+              right: "unset",
+              left: 5,
+            },
+            [`[dir="ltr"] &`]: {
+              right: 5,
+              left: "unset",
+            },
+            width: "min-content",
+          }}
+        />
         <Stack direction="column" spacing={1}>
           <Typography level="h3" fontWeight="bold">
             {props.title}
