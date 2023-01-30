@@ -1,25 +1,18 @@
-import {
-  AspectRatio,
-  Box,
-  Card,
-  CardCover,
-  CardOverflow,
-  Chip,
-  Link,
-  Stack,
-  Typography,
-} from "@mui/joy";
+import { Box, Card, CardCover, Chip, Typography } from "@mui/joy";
 import { FC } from "react";
-import { Link as RouterLink } from "react-router-dom";
 interface IProjectCardProps {
-  id: string | number;
+  onClick: () => void;
 }
 
 export const ProjectCard: FC<IProjectCardProps> = (props) => {
   const tempSrc =
     "https://images.unsplash.com/photo-1612441804231-77a36b284856?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHx8&w=1000&q=80";
   return (
-    <Card sx={{ aspectRatio: "1.5 / 1" }} className="direction-agnostic">
+    <Card
+      sx={{ aspectRatio: "1.5 / 1", cursor: "pointer" }}
+      className="direction-agnostic"
+      onClick={props.onClick}
+    >
       <CardCover>
         <Box component="img" src={tempSrc}></Box>
       </CardCover>
@@ -48,22 +41,8 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
             <Chip sx={{ position: "absolute", top: 7, right: 7 }}>
               Graphic Design
             </Chip>
-            <Typography level="h5" fontWeight="bold">
-              <Link
-                component={RouterLink}
-                to={`/projects/${props.id}`}
-                overlay
-                underline="none"
-                sx={{
-                  color: "#fff",
-                  textOverflow: "ellipsis",
-                  overflow: "hidden",
-                  display: "block",
-                }}
-                state={{ id: props.id }}
-              >
-                Landscape
-              </Link>
+            <Typography level="h5" fontWeight="bold" textColor="white">
+              Landscape
             </Typography>
             <Typography textColor="neutral.300">By Marwan</Typography>
           </Box>
