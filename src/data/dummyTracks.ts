@@ -34,7 +34,7 @@ export const tracks = [
   {
     id: 2,
     name: "Advanced Front-End",
-    coever:
+    cover:
       "https://cdn.dribbble.com/users/1152627/screenshots/7024080/shot_21_agustus_4x.png",
     thumbnail:
       "https://cdn.dribbble.com/users/1152627/screenshots/7024080/shot_21_agustus_4x.png",

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { dummyTestimonials } from "../data/dummyTestimonials";
 import { tracks } from "../data/dummyTracks";
 
 type Tech = {

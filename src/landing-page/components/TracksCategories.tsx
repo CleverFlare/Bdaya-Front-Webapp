@@ -5,19 +5,25 @@ import { FC, useState } from "react";
 import { FreeMode } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { useTranslation } from "react-i18next";
+
+type Category = {
+  name: string;
+  id: string | number;
+};
+
 interface ITracksCategoriesProps {
-  list?: string[];
+  list?: Category[];
   onSelect?: (category: string) => void;
 }
 
 export const TracksCategories: FC<ITracksCategoriesProps> = (props) => {
   const { t } = useTranslation();
-  const categories = ["All", ...(props.list || [])];
-  const [selected, setSelected] = useState<string>(categories[0]);
+  const categories = [{ name: "All", id: null }, ...(props.list || [])];
+  const [selected, setSelected] = useState<string | number | null>(null);
 
   function selectCategory(e: any) {
-    if (e.target.checked) setSelected(e.target.value);
-    props.onSelect && props.onSelect(e.target.value);
+    if (e.target.checked) setSelected(e.target.value || null);
+    props.onSelect && props.onSelect(e.target.value || null);
   }
 
   return (
@@ -38,7 +44,7 @@ export const TracksCategories: FC<ITracksCategoriesProps> = (props) => {
         }}
       >
         {categories.map((category) => {
-          const checked = category === selected;
+          const checked = String(category.id) === String(selected);
           const color = checked ? "primary" : "neutral";
           return (
             <SwiperSlide key={`category ${crypto.randomUUID()}`}>
@@ -56,8 +62,8 @@ export const TracksCategories: FC<ITracksCategoriesProps> = (props) => {
                   disableIcon
                   overlay
                   color={color}
-                  label={category}
-                  value={category}
+                  label={category.name}
+                  value={category.id || ""}
                   checked={checked}
                   onChange={selectCategory}
                 />

@@ -1,23 +1,15 @@
 import { Card, Chip, Container, Grid, Stack, Typography } from "@mui/joy";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useUpdate } from "../../hooks";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 import { ProjectCard } from "../components/ProjectCard";
 import { ProjectPreviewModal } from "../components/ProjectPreviewModal";
 import { TracksCategories } from "../components/TracksCategories";
-interface IProjectsProps {}
 
-const dummyDetails = {
-  title: "Landscape",
-  author: "Marwan",
-  images: [
-    "https://media.istockphoto.com/id/1270775179/photo/cairo-found-nile.jpg?b=1&s=612x612&w=0&k=20&c=yo4YxCngGOBbIikg6pGQhtLQl7OmzplVuJJXTBnNkKg=",
-    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-    "https://www.istockphoto.com/resources/images/PhotoFTLP/P4-JAN-iStock-1432854572.jpg",
-  ],
-};
-
-export const Projects: FC<IProjectsProps> = (props) => {
+export const Projects: FC = () => {
+  const tracks = useSelector((state: RootState) => state.tracks.value);
+  const projects = useSelector((state: RootState) => state.projects.value);
   const [trackDetails, setTrackDetails] = useState<any>(null);
   const [openPreview, setOpenPreview] = useState<boolean>(false);
   const { t } = useTranslation();
@@ -37,6 +29,14 @@ export const Projects: FC<IProjectsProps> = (props) => {
     setOpenPreview(false);
   }
 
+  let filteredProjects = projects;
+
+  // filters only if the category is a truthy value
+  selectedCategory &&
+    (filteredProjects = projects.filter(
+      (project) => String(project.track) === String(selectedCategory)
+    ));
+
   return (
     <>
       <Container
@@ -53,30 +53,21 @@ export const Projects: FC<IProjectsProps> = (props) => {
           {t("landing-page.projects-page.title")}
         </Typography>
         <TracksCategories
-          list={["Front-End", "Back-End", "C#", "Graphic Design"]}
+          list={tracks.map((track) => ({ name: track.name, id: track.id }))}
           onSelect={handleSelectCategory}
         />
         <Grid container spacing={2}>
-          <Grid md={4} sm={6} xs={12}>
-            <ProjectCard
-              onClick={() => handleOpenPreviewDetails(dummyDetails)}
-            />
-          </Grid>
-          <Grid md={4} sm={6} xs={12}>
-            <ProjectCard
-              onClick={() => handleOpenPreviewDetails(dummyDetails)}
-            />
-          </Grid>
-          <Grid md={4} sm={6} xs={12}>
-            <ProjectCard
-              onClick={() => handleOpenPreviewDetails(dummyDetails)}
-            />
-          </Grid>
-          <Grid md={4} sm={6} xs={12}>
-            <ProjectCard
-              onClick={() => handleOpenPreviewDetails(dummyDetails)}
-            />
-          </Grid>
+          {filteredProjects.map((project) => (
+            <Grid md={4} sm={6} xs={12}>
+              <ProjectCard
+                title={project.title}
+                author={project.author}
+                thumbnail={project.images[0]}
+                track={project.track}
+                onClick={() => handleOpenPreviewDetails(project)}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </>

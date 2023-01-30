@@ -1,12 +1,25 @@
 import { Box, Card, CardCover, Chip, Typography } from "@mui/joy";
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { useSelector } from "react-redux";
+import useDynamicTranslation from "../../hooks/useDynamicTranslation";
+import { RootState } from "../../store";
 interface IProjectCardProps {
+  thumbnail?: string;
+  title: string;
+  author: string;
+  track: string | number;
   onClick: () => void;
 }
 
 export const ProjectCard: FC<IProjectCardProps> = (props) => {
-  const tempSrc =
-    "https://images.unsplash.com/photo-1612441804231-77a36b284856?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHx8&w=1000&q=80";
+  const dt = useDynamicTranslation();
+  const trackName = useSelector(
+    (state: RootState) =>
+      state.tracks.value.find((track) => track.id === props.track)?.name
+  );
+  const thumbnailPlaceholder =
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
+
   return (
     <Card
       sx={{ aspectRatio: "1.5 / 1", cursor: "pointer" }}
@@ -14,7 +27,10 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
       onClick={props.onClick}
     >
       <CardCover>
-        <Box component="img" src={tempSrc}></Box>
+        <Box
+          component="img"
+          src={props?.thumbnail || thumbnailPlaceholder}
+        ></Box>
       </CardCover>
       <CardCover
         sx={{
@@ -39,12 +55,12 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
             }}
           >
             <Chip sx={{ position: "absolute", top: 7, right: 7 }}>
-              Graphic Design
+              {trackName || "Unknwon Track"}
             </Chip>
             <Typography level="h5" fontWeight="bold" textColor="white">
-              Landscape
+              {props.title}
             </Typography>
-            <Typography textColor="neutral.300">By Marwan</Typography>
+            <Typography textColor="neutral.300">By {props.author}</Typography>
           </Box>
         </Box>
       </CardCover>

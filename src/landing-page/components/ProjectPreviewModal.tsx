@@ -10,6 +10,7 @@ import {
 import { FC, ReactNode } from "react";
 import { ProjectPreviewSlider } from "./ProjectPreviewSlider";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
+import useDynamicTranslation from "../../hooks/useDynamicTranslation";
 
 interface IProjectPreviewModalProps {
   open: boolean;
@@ -22,6 +23,7 @@ interface IProjectPreviewModalProps {
 }
 
 export const ProjectPreviewModal: FC<IProjectPreviewModalProps> = (props) => {
+  const dt = useDynamicTranslation();
   return (
     <Modal
       {...props}
@@ -69,7 +71,7 @@ export const ProjectPreviewModal: FC<IProjectPreviewModalProps> = (props) => {
                 startDecorator={<InsertLinkIcon />}
                 variant="soft"
               >
-                Link Attachment To The Project
+                {dt("رابط مرفق للمشروع", "Link Attachment To The Project")}
               </Chip>
             )}
           </Box>

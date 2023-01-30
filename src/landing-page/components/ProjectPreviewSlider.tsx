@@ -16,6 +16,12 @@ export const ProjectPreviewSlider: FC<IProjectPreviewSliderProps> = (props) => {
         borderRadius: 10,
         maxHeight: "700px",
         color: "#80808036",
+        "& .swiper-wrapper": {
+          height: "100% !important",
+        },
+        "& .swiper-slide": {
+          height: "auto !important",
+        },
         "& .swiper-pagination-bullet": {
           borderRadius: 2,
           opacity: 0.5,
