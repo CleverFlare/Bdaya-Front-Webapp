@@ -1,4 +1,4 @@
-export const dummyTestimonials = [
+export const testimonials = [
   {
     pfp: "https://wl-brightside.cf.tsp.li/resize/728x/jpg/337/af8/e797ca5cab85b8864dd49a290b.jpg",
     author: "Liam Noah",

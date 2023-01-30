@@ -1,7 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, createAction } from "@reduxjs/toolkit";
 import projects from "./slices/projects";
 import testimonial from "./slices/testimonial";
 import tracks from "./slices/tracks";
+
+export const resetAll = createAction("REVERT_ALL");
 
 export const store = configureStore({
   reducer: {

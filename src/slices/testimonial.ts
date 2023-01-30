@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { dummyTestimonials } from "../data/dummyTestimonials";
+import { testimonials } from "../data/dummyTestimonials";
 
 type Testimonial = {
   pfp: string | null;
@@ -13,7 +13,7 @@ export interface TestimonialState {
 }
 
 const initialState: TestimonialState = {
-  value: dummyTestimonials,
+  value: testimonials,
 };
 
 export const counterSlice = createSlice({

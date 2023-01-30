@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { projects } from "../data/dummyProjects";
+import { resetAll } from "../store";
 
 type Project = {
   id: number | string;
   title: string;
   author: string;
-  track: string;
+  track: number;
   images: string[];
 };
 
