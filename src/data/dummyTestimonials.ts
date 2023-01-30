@@ -25,13 +25,13 @@ export const testimonials = [
   },
   {
     pfp: "https://cdn.pixabay.com/photo/2019/10/08/23/00/beauty-4536132_960_720.jpg",
-    author: "Olivia Emma",
+    author: "Olivia Elijah",
     track: "Game Development",
     body: "Fabulous! I like everything about this student activity!",
   },
   {
     pfp: "https://cdn.pixabay.com/photo/2021/01/27/07/58/woman-5954091_960_720.jpg",
-    author: "Charlotte Amelia",
+    author: "Charlotte Noah",
     track: "Advanced Front-End",
     body: "I thought it's too good to be true, then I was shocked that it is true!!",
   },
