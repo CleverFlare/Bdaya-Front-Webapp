@@ -59,7 +59,9 @@
     "track_details-page": {
       "tech": "التكنولوجيا المستخدمة",
       "about": "معلومات عن المسار",
-      "prereq": "المتطلبات"
+      "prereq": "المتطلبات",
+      "projects": "المشاريع",
+      "empty-projects": "لا يوجد مشاريع حالياً"
     },
     "projects-page": {
       "title": "المشاريع",

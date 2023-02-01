@@ -1,4 +1,5 @@
 import {
+  Box,
   Chip,
   Container,
   Divider,
@@ -9,7 +10,7 @@ import {
   Typography,
 } from "@mui/joy";
 import { SpecInfo } from "../components/SpecInfo";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { ImageCover } from "../components/ImageCover";
 import { useTranslation } from "react-i18next";
 import NewReleasesIcon from "@mui/icons-material/NewReleases";
@@ -19,9 +20,18 @@ import { useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import useDynamicTranslation from "../../hooks/useDynamicTranslation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import { ProjectCard } from "../components/ProjectCard";
+import { ProjectPreviewModal } from "../components/ProjectPreviewModal";
+
 interface ITrackDetailsProps {}
 
 export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
+  const projects = useSelector((state: RootState) => state.projects.value);
+
   const { id } = useParams();
 
   const { t } = useTranslation();
@@ -31,6 +41,42 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
   const tracks = useSelector((state: RootState) => state.tracks.value);
 
   let track = tracks.find((track) => String(track.id) === id);
+
+  const responsive = {
+    0: {
+      slidesPerView: 1,
+    },
+    600: {
+      slidesPerView: 2,
+    },
+    900: {
+      slidesPerView: 3,
+    },
+    1200: {
+      slidesPerView: 3,
+    },
+  };
+
+  let filteredProjects = projects.filter(
+    (project: any) => String(project.track) === String(id)
+  );
+
+  const [trackDetails, setTrackDetails] = useState<any>(null);
+  const [openPreview, setOpenPreview] = useState<boolean>(false);
+
+  function handleOpenPreviewDetails(obj: any) {
+    setTrackDetails(obj);
+    setOpenPreview(true);
+  }
+
+  function handleClosePreviewDetails() {
+    setTrackDetails(null);
+    setOpenPreview(false);
+  }
+
+  useEffect(() => {
+    console.log(filteredProjects);
+  }, [filteredProjects]);
 
   return (
     <>
@@ -66,6 +112,48 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
             ))}
           </List>
         </SpecInfo>
+        <SpecInfo title={t("landing-page.track_details-page.projects")}>
+          <>
+            {!filteredProjects.length && (
+              <Typography
+                textColor="neutral.500"
+                textTransform="uppercase"
+                fontWeight="bold"
+              >
+                {t("landing-page.track_details-page.empty-projects")}
+              </Typography>
+            )}
+            <Box
+              component={Swiper}
+              sx={{ marginTop: 2 }}
+              modules={[Navigation]}
+              spaceBetween={30}
+              breakpoints={responsive}
+              navigation
+              className="direction-agnostic"
+            >
+              {filteredProjects.map((project, index) => {
+                console.log(index);
+                return (
+                  <SwiperSlide key={`Project ${index}`}>
+                    <ProjectCard
+                      title={project.title}
+                      author={project.author}
+                      thumbnail={project.images[0]}
+                      track={project.track}
+                      onClick={() => handleOpenPreviewDetails(project)}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Box>
+          </>
+        </SpecInfo>
+        <ProjectPreviewModal
+          open={openPreview}
+          onClose={() => handleClosePreviewDetails()}
+          {...(trackDetails || {})}
+        />
       </Container>
     </>
   );

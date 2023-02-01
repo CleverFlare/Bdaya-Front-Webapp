@@ -58,7 +58,9 @@
     "track_details-page": {
       "tech": "Technologies Used",
       "about": "About The Track",
-      "prereq": "Prerequisites"
+      "prereq": "Prerequisites",
+      "projects": "Projects",
+      "empty-projects": "No Projects Currently"
     },
     "projects-page": {
       "title": "Projects",
