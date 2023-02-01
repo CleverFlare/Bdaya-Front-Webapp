@@ -13,7 +13,7 @@ export interface TestimonialState {
 }
 
 const initialState: TestimonialState = {
-  value: [],
+  value: testimonials,
 };
 
 export const counterSlice = createSlice({

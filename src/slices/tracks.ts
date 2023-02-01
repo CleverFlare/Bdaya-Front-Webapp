@@ -23,7 +23,7 @@ export interface TrackState {
 }
 
 const initialState: TrackState = {
-  value: [],
+  value: tracks,
 };
 
 export const counterSlice = createSlice({

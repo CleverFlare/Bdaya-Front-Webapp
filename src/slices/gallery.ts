@@ -6,7 +6,7 @@ export interface ProjectsState {
 }
 
 const initialState: ProjectsState = {
-  value: [],
+  value: gallery,
 };
 
 export const counterSlice = createSlice({
