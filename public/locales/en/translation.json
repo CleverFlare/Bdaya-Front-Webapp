@@ -53,7 +53,7 @@
       "title": "The Gallery"
     },
     "tracks-page": {
-      "title": "Tracks"
+      "title": "The Tracks"
     },
     "track_details-page": {
       "tech": "Technologies Used",
@@ -63,7 +63,7 @@
       "empty-projects": "No Projects Currently"
     },
     "projects-page": {
-      "title": "Projects",
+      "title": "The Projects",
       "categories": "Categories"
     },
     "footer-text": "This website was created by Bdaya web development team, all rights reserved"
