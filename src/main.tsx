@@ -12,20 +12,20 @@ const theme = extendTheme({
   colorSchemes: {
     dark: {
       palette: {
-        primary: {
-          solidBg: "#056aa7",
-          solidHoverBg: "#015a8f",
-          outlinedBorder: "#056aa7",
-        },
-        neutral: {
-          softBg: "#414150",
-          softHoverBg: "#505064",
-          outlinedBorder: "#727272",
-          outlinedHoverBorder: "#056aa7",
-        },
-        background: {
-          surface: "#2b2b3b",
-        },
+        // primary: {
+        //   solidBg: "#056aa7",
+        //   solidHoverBg: "#015a8f",
+        //   outlinedBorder: "#056aa7",
+        // },
+        // neutral: {
+        //   softBg: "#414150",
+        //   softHoverBg: "#505064",
+        //   outlinedBorder: "#727272",
+        //   outlinedHoverBorder: "#056aa7",
+        // },
+        // background: {
+        //   surface: "#2b2b3b",
+        // },
       },
     },
   },
