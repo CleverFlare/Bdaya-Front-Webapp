@@ -14,7 +14,7 @@ export interface ProjectsState {
 }
 
 const initialState: ProjectsState = {
-  value: projects,
+  value: [],
 };
 
 export const counterSlice = createSlice({

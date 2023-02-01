@@ -26,6 +26,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { ProjectCard } from "../components/ProjectCard";
 import { ProjectPreviewModal } from "../components/ProjectPreviewModal";
+import { Empty } from "../../illustrations/Empty";
 
 interface ITrackDetailsProps {}
 
@@ -78,6 +79,8 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
     console.log(filteredProjects);
   }, [filteredProjects]);
 
+  const isEmpty = !Boolean(filteredProjects.length);
+
   return (
     <>
       <Container
@@ -114,39 +117,41 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
         </SpecInfo>
         <SpecInfo title={t("landing-page.track_details-page.projects")}>
           <>
-            {!filteredProjects.length && (
-              <Typography
-                textColor="neutral.500"
-                textTransform="uppercase"
-                fontWeight="bold"
+            {isEmpty && (
+              <Stack
+                justifyContent="center"
+                alignItems="center"
+                sx={{ flex: 1 }}
               >
-                {t("landing-page.track_details-page.empty-projects")}
-              </Typography>
+                <Empty>currently there are no projects</Empty>
+              </Stack>
             )}
-            <Box
-              component={Swiper}
-              sx={{ marginTop: 2 }}
-              modules={[Navigation]}
-              spaceBetween={30}
-              breakpoints={responsive}
-              navigation
-              className="direction-agnostic"
-            >
-              {filteredProjects.map((project, index) => {
-                console.log(index);
-                return (
-                  <SwiperSlide key={`Project ${index}`}>
-                    <ProjectCard
-                      title={project.title}
-                      author={project.author}
-                      thumbnail={project.images[0]}
-                      track={project.track}
-                      onClick={() => handleOpenPreviewDetails(project)}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Box>
+            {!isEmpty && (
+              <Box
+                component={Swiper}
+                sx={{ marginTop: 2 }}
+                modules={[Navigation]}
+                spaceBetween={30}
+                breakpoints={responsive}
+                navigation
+                className="direction-agnostic"
+              >
+                {filteredProjects.map((project, index) => {
+                  console.log(index);
+                  return (
+                    <SwiperSlide key={`Project ${index}`}>
+                      <ProjectCard
+                        title={project.title}
+                        author={project.author}
+                        thumbnail={project.images[0]}
+                        track={project.track}
+                        onClick={() => handleOpenPreviewDetails(project)}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Box>
+            )}
           </>
         </SpecInfo>
         <ProjectPreviewModal

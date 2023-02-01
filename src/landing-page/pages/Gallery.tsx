@@ -8,6 +8,7 @@ import { useUpdate } from "../../hooks";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { Empty } from "../../illustrations/Empty";
 interface IGalleryProps {}
 
 export const Gallery: FC<IGalleryProps> = (props) => {
@@ -31,12 +32,14 @@ export const Gallery: FC<IGalleryProps> = (props) => {
     setOpenLightbox(false);
   }
 
+  const isEmpty = !Boolean(gallery.length);
+
   return (
     <>
       <Container
         component={Stack}
         spacing={2}
-        sx={{ paddingBlock: 2, paddingBottom: 10 }}
+        sx={{ display: "flex", paddingBlock: 2, paddingBottom: 10, flex: 1 }}
       >
         <Typography level="h2" fontWeight="bold">
           {t("landing-page.gallery-page.title")}
@@ -48,19 +51,26 @@ export const Gallery: FC<IGalleryProps> = (props) => {
           onClose={handleCloseLightbox}
           loop
         />
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {gallery.map((img: any, index: number) => (
-            <GalleryImg
-              src={img}
-              key={`Gallery Picture ${index}`}
-              onClick={() => handlePreviewPic(index)}
-            />
-          ))}
-        </Masonry>
+        {isEmpty && (
+          <Stack justifyContent="center" alignItems="center" sx={{ flex: 1 }}>
+            <Empty>currently there are no pictures</Empty>
+          </Stack>
+        )}
+        {!isEmpty && (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {gallery.map((img: any, index: number) => (
+              <GalleryImg
+                src={img}
+                key={`Gallery Picture ${index}`}
+                onClick={() => handlePreviewPic(index)}
+              />
+            ))}
+          </Masonry>
+        )}
       </Container>
     </>
   );

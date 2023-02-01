@@ -2,6 +2,7 @@ import { Card, Chip, Container, Grid, Stack, Typography } from "@mui/joy";
 import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Empty } from "../../illustrations/Empty";
 import { RootState } from "../../store";
 import { ProjectCard } from "../components/ProjectCard";
 import { ProjectPreviewModal } from "../components/ProjectPreviewModal";
@@ -37,6 +38,8 @@ export const Projects: FC = () => {
       (project) => String(project.track) === String(selectedCategory)
     ));
 
+  const isEmpty = !Boolean(projects.length);
+
   return (
     <>
       <Container
@@ -56,19 +59,27 @@ export const Projects: FC = () => {
           list={tracks.map((track) => ({ name: track.name, id: track.id }))}
           onSelect={handleSelectCategory}
         />
-        <Grid container spacing={2}>
-          {filteredProjects.map((project, index) => (
-            <Grid md={4} sm={6} xs={12} key={`Project ${index}`}>
-              <ProjectCard
-                title={project.title}
-                author={project.author}
-                thumbnail={project.images[0]}
-                track={project.track}
-                onClick={() => handleOpenPreviewDetails(project)}
-              />
-            </Grid>
-          ))}
-        </Grid>
+
+        {isEmpty && (
+          <Stack justifyContent="center" alignItems="center" sx={{ flex: 1 }}>
+            <Empty>currently there are no projects</Empty>
+          </Stack>
+        )}
+        {!isEmpty && (
+          <Grid container spacing={2}>
+            {filteredProjects.map((project, index) => (
+              <Grid md={4} sm={6} xs={12} key={`Project ${index}`}>
+                <ProjectCard
+                  title={project.title}
+                  author={project.author}
+                  thumbnail={project.images[0]}
+                  track={project.track}
+                  onClick={() => handleOpenPreviewDetails(project)}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Container>
     </>
   );
