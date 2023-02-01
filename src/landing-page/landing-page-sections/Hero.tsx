@@ -61,7 +61,8 @@ export const Hero: FC<IHeroProps> = (props) => {
               sx={{
                 "& svg > g:first-of-type > g:first-of-type path:nth-of-type(1)":
                   {
-                    fill: bgcolor,
+                    fill: "#A9C6FF",
+                    opacity: 0.5,
                   },
               }}
             ></Box>
