@@ -12,7 +12,7 @@ export const projects = [
   {
     id: 2,
     title: "Website",
-    author: "Walaa Sakamani",
+    author: "Muhammad Omar",
     track: 1,
     images: [
       "https://cdn.dribbble.com/users/372375/screenshots/5614614/design_system_lite_template_for_figma__1__4x.png",
