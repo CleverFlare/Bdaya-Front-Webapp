@@ -2,6 +2,8 @@
   "validation": {
     "required": "This field is required",
     "code": "Invalid code",
+    "email": "Invalid Email",
+    "confirmPassword": "Password doesn't match",
     "eightCharsPass": "must contain at least 8 characters",
     "oneNumberPass": "must contain at least one number",
     "oneUppercasePass": "must contain at least one upper case letter",
@@ -81,6 +83,17 @@
     "projects-page": {
       "title": "The Projects",
       "categories": "Categories"
+    },
+    "enroll-page": {
+      "title": "Registry",
+      "desc": "Fill in the following fields and then follow up your email for the acceptance message",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "code": "Collage Code",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "submit": "Submit"
     },
     "footer-text": "This website was created by Bdaya web development team, all rights reserved"
   }

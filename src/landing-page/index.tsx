@@ -19,6 +19,7 @@ import { ComingSoon } from "./pages/ComingSoon";
 import { Tracks } from "./pages/Tracks";
 import { TrackDetails } from "./pages/TrackDetails";
 import { Projects } from "./pages/Projects";
+import { Enroll } from "./pages/Enroll";
 
 interface ILandingPageProps {}
 
@@ -39,7 +40,7 @@ export const LandingPage: FC<ILandingPageProps> = (props) => {
         <Route path={TRACKS} element={<Tracks />} />
         <Route path={TRACK_DETAILS} element={<TrackDetails />} />
         <Route path={PROJECTS} element={<Projects />} />
-        <Route path={REGISTER} element={<ComingSoon />} />
+        <Route path={REGISTER} element={<Enroll />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
