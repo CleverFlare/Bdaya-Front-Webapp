@@ -6,7 +6,6 @@ import { Box } from "@mui/system";
 import { LangButton } from "../atoms/LangButton";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
-import { SIGNIN } from "../../routesPaths";
 
 interface IMobileMenuProps {
   links: { text: string; to: string }[];
