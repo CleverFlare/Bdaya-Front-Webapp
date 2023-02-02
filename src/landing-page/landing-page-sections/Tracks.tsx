@@ -31,7 +31,7 @@ export const Tracks: FC<ITracksProps> = (props) => {
         )}
         {!isEmpty && (
           <Grid container sx={{ marginTop: 5 }} spacing={2}>
-            {tracks.map((track) => (
+            {tracks.slice(0, 3).map((track) => (
               <Grid md={4} sm={6} xs={12} key={`Track ${track.id}`}>
                 <TrackCard
                   title={track.name}

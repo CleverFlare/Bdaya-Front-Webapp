@@ -95,4 +95,28 @@ export const tracks = [
     prereqAr: ["معرفة اساسيات الكمبيوتر وكيفية استخدامة"],
     prereqEn: ["Basic Knowledge of Computer and How to Use It"],
   },
+  {
+    id: 4,
+    name: "Game Development",
+    cover:
+      "https://rvweb.nyc3.digitaloceanspaces.com/wp-content/uploads/2020/03/16120058/unity.jpg",
+    thumbnail:
+      "https://www.arenaparkstreet.com/blog/wp-content/uploads/2021/05/Game-Development.png",
+    tech: [
+      {
+        name: "Unity",
+        infoUrl: "https://en.wikipedia.org/wiki/Unity_(game_engine)",
+      },
+      {
+        name: "C# Language",
+        infoUrl: "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)",
+      },
+    ],
+    detailsAr:
+      "تطوير ألعاب الفيديو هي عملية تطوير برمجيات يتم فيها تطوير لعبة فيديو. التطوير يتم من قبل مطور لعبة فيديو، والذي قد يكون شخصاً واحداً فقط إلى شركة ضخمة. الألعاب السائدة يتم تمويلها عادة من قبل ناشر أو عدة ناشطين وتستلزم أيامًا أو شهورًا أو أعوامًا للتطوير. الألعاب المستقلة يمكن أن تستغرق وقتا أقل ويمكن أن تنتج بثمن من طرف الأفراد والمطورين الصغار. صناعة الألعاب المستقلة عرفت ازدهارا واضحاً في هذه الأعوام مع نمو أنظمة التوزيعات الشبكية الجديدة وسوق ألعاب الهاتف المحمول.",
+    detailsEn:
+      "Video game development (or gamedev) is the process of developing a video game. The effort is undertaken by a developer, ranging from a single person to an international team dispersed across the globe. Development of traditional commercial PC and console games is normally funded by a publisher and can take several years to reach completion. Indie games usually take less time and money and can be produced by individuals and smaller developers. The independent game industry has been on the rise, facilitated by the growth of accessible game development software such as Unity platform and Unreal Engine[1] and new online distribution systems such as Steam and Uplay, as well as the mobile game market for Android and iOS devices.      ",
+    prereqAr: ["معرفة اساسيات الكمبيوتر وكيفية استخدامة"],
+    prereqEn: ["Basic Knowledge of Computer and How to Use It"],
+  },
 ];
