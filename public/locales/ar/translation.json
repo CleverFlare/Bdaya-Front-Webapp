@@ -1,8 +1,24 @@
 {
+  "validation": {
+    "required": "هذا الحقل إلزامي",
+    "code": "الكود غير صالح",
+    "eightCharsPass": "يجب ان يحتوى على 8 احرف على الأقل",
+    "oneNumberPass": "يجب ان يحتوي على رقم واحد على الأقل",
+    "oneUppercasePass": "يجب ان يحتوي على حرف واحد كبير على الأقل",
+    "oneLowercasePass": "يجب ان يحتوي على حرف واحد صغير على الأقل"
+  },
   "components": {
     "track_card": {
       "learn": "تعلم",
       "details_button": "رؤية التفاصيل"
+    },
+    "signin_modal": {
+      "title": "سجل الدخول",
+      "desc": "سجل الدخول لإستخدام مساحة العمل الخاصة بك",
+      "code": "الكود",
+      "pass": "كلمة المرور",
+      "enroll": "لم تسجل بعد؟ اضغط للتسجيل!",
+      "submit": "تسجيل"
     }
   },
   "landing-page": {

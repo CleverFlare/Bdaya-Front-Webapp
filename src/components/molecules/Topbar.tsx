@@ -4,7 +4,7 @@ import { useScroll } from "../../hooks";
 
 interface ITopbarProps {
   isSolid?: boolean;
-  children?: ReactElement;
+  children?: ReactElement | ReactElement[];
 }
 
 export const Topbar: FC<ITopbarProps> = (props) => {

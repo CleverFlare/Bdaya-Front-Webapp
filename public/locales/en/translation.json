@@ -1,8 +1,24 @@
 {
+  "validation": {
+    "required": "This field is required",
+    "code": "Invalid code",
+    "eightCharsPass": "must contain at least 8 characters",
+    "oneNumberPass": "must contain at least one number",
+    "oneUppercasePass": "must contain at least one upper case letter",
+    "oneLowercasePass": "must contain at least one lower case letter"
+  },
   "components": {
     "track_card": {
       "learn": "learn",
       "details_button": "See Details"
+    },
+    "signin_modal": {
+      "title": "Sign In",
+      "desc": "Sign in to view your workspace",
+      "code": "Code",
+      "pass": "Password",
+      "enroll": "Haven't enrolled yet? click to enroll!",
+      "submit": "Submit"
     }
   },
   "landing-page": {

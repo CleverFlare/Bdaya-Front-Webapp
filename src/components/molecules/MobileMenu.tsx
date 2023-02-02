@@ -11,7 +11,8 @@ import { SIGNIN } from "../../routesPaths";
 interface IMobileMenuProps {
   links: { text: string; to: string }[];
   spread: boolean;
-  onClickOutside?(): void;
+  onClickOutside?: () => void;
+  onSignin?: () => void;
 }
 
 export const MobileMenu: FC<IMobileMenuProps> = (props) => {
@@ -62,10 +63,9 @@ export const MobileMenu: FC<IMobileMenuProps> = (props) => {
           <LangButton />
           <ModeButton />
           <Button
-            component={Link}
-            to={SIGNIN}
             startDecorator={<LoginIcon />}
             fullWidth
+            onClick={props.onSignin}
           >
             {t("landing-page.topbar.signin")}
           </Button>

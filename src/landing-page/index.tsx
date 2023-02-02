@@ -10,7 +10,6 @@ import {
   GALLERY,
   PROJECTS,
   REGISTER,
-  SIGNIN,
   TRACKS,
   TRACK_DETAILS,
 } from "../routesPaths";
@@ -40,7 +39,6 @@ export const LandingPage: FC<ILandingPageProps> = (props) => {
         <Route path={TRACKS} element={<Tracks />} />
         <Route path={TRACK_DETAILS} element={<TrackDetails />} />
         <Route path={PROJECTS} element={<Projects />} />
-        <Route path={SIGNIN} element={<ComingSoon />} />
         <Route path={REGISTER} element={<ComingSoon />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
