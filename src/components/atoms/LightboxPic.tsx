@@ -13,7 +13,7 @@ export const LightboxPic: FC<ILightboxPicProps> = (props) => {
     minWidth: "0px",
     maxWidth: "1000px",
     overflow: "hidden",
-    cursor: "zoom-in",
+    // cursor: "zoom-in",
   };
 
   const imgStyle = {
@@ -27,12 +27,12 @@ export const LightboxPic: FC<ILightboxPicProps> = (props) => {
     "--y": `0%`,
     width: "100%",
     touchAction: "none",
-    transform: "scale(1)",
-    transformOrigin: `var(--x) var(--y)`,
-    transition: "transform 0.5s",
-    "&:hover": {
-      transform: "scale(2)",
-    },
+    // transform: "scale(1)",
+    // transformOrigin: `var(--x) var(--y)`,
+    // transition: "transform 0.5s",
+    // "&:hover": {
+    //   transform: "scale(2)",
+    // },
   };
 
   let width: number, height: number, x: number, y: number;
