@@ -3,6 +3,7 @@ import {
   FormControl,
   FormHelperText,
   FormLabel,
+  IconButton,
   Input,
   Link,
   Modal,
@@ -11,10 +12,12 @@ import {
   Typography,
 } from "@mui/joy";
 import { Form, Formik } from "formik";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 import { REGISTER } from "../../routesPaths";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { signinSchema } from "../../schemas/signinSchema";
 interface ISigninDialogProps {
   open: boolean;
@@ -24,8 +27,14 @@ interface ISigninDialogProps {
 export const SigninDialog: FC<ISigninDialogProps> = (props) => {
   const { t } = useTranslation();
 
+  const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
+
   function handleSubmit(values: { code: string; password: string }) {
     console.log(values);
+  }
+
+  function handleTogglePassVisibility() {
+    setVisiblePassword((old) => !old);
   }
 
   return (
@@ -77,12 +86,25 @@ export const SigninDialog: FC<ISigninDialogProps> = (props) => {
                   <FormControl error={Boolean(errors.password)}>
                     <FormLabel>{t("components.signin_modal.pass")}</FormLabel>
                     <Input
+                      type={visiblePassword ? "text" : "password"}
                       required
                       value={values.password}
                       onChange={(e) =>
                         setFieldValue("password", e.target.value)
                       }
                       onBlur={handleBlur}
+                      endDecorator={
+                        <IconButton
+                          color="neutral"
+                          onClick={handleTogglePassVisibility}
+                        >
+                          {visiblePassword ? (
+                            <VisibilityOffIcon />
+                          ) : (
+                            <VisibilityIcon />
+                          )}
+                        </IconButton>
+                      }
                     />
                     <FormHelperText>{t(errors.password || "")}</FormHelperText>
                   </FormControl>
