@@ -2,12 +2,13 @@
   "validation": {
     "required": "This field is required",
     "code": "Invalid code",
-    "email": "Invalid Email",
+    "email": "Invalid email",
+    "phone": "Invalid phone number",
     "confirmPassword": "Password doesn't match",
-    "eightCharsPass": "must contain at least 8 characters",
-    "oneNumberPass": "must contain at least one number",
-    "oneUppercasePass": "must contain at least one upper case letter",
-    "oneLowercasePass": "must contain at least one lower case letter"
+    "eightCharsPass": "Must contain at least 8 characters",
+    "oneNumberPass": "Must contain at least one number",
+    "oneUppercasePass": "Must contain at least one upper case letter",
+    "oneLowercasePass": "Must contain at least one lower case letter"
   },
   "components": {
     "track_card": {
@@ -91,8 +92,10 @@
       "lastName": "Last Name",
       "email": "Email",
       "code": "Collage Code",
+      "phone": "Phone Number",
+      "altPhone": "Alternative Phone Number",
       "password": "Password",
-      "confirm_password": "Confirm Password",
+      "track": "Track",
       "submit": "Submit"
     },
     "footer-text": "This website was created by Bdaya web development team, all rights reserved"

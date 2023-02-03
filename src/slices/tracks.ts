@@ -6,7 +6,7 @@ type Tech = {
   infoUrl: string;
 };
 
-type Track = {
+export type Track = {
   id: string | number;
   name: string;
   cover: string;
