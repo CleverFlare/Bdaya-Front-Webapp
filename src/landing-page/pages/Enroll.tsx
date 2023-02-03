@@ -141,6 +141,7 @@ export const Enroll: FC<IEnrollProps> = (props) => {
                       </Stack>
                       <Stack direction="row" gap={2} flexWrap="wrap">
                         <TextField
+                          type="email"
                           label={t("landing-page.enroll-page.email")}
                           value={values.email}
                           error={errors.email}
