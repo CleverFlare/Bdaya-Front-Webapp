@@ -4,10 +4,13 @@ import { Suspense } from "react";
 import { LandingPage } from "./landing-page";
 import { useOnMount } from "./hooks";
 import { Loading } from "./components/atoms/Loading";
-import { ScrollToTop } from "./components/atoms/ScrollToTop";
 import i18next from "i18next";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
+import { Workspace } from "./workspace";
 
 function App() {
+  const user = useSelector((state: RootState) => state.user.value);
   useOnMount(() => {
     switch (i18next.language) {
       case "en":
@@ -30,9 +33,8 @@ function App() {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <ScrollToTop />
         <Routes>
-          <Route path="/*" element={<LandingPage />} />
+          <Route path="/*" element={user ? <Workspace /> : <LandingPage />} />
         </Routes>
       </Suspense>
     </>

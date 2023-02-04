@@ -3,6 +3,7 @@ import gallery from "./slices/gallery";
 import projects from "./slices/projects";
 import testimonial from "./slices/testimonial";
 import tracks from "./slices/tracks";
+import user from "./slices/user";
 
 export const resetAll = createAction("REVERT_ALL");
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     tracks: tracks,
     projects: projects,
     gallery: gallery,
+    user: user,
   },
 });
 

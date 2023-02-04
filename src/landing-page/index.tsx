@@ -15,11 +15,11 @@ import {
 } from "../routesPaths";
 import { AboutUs } from "./pages/AboutUs";
 import { Gallery } from "./pages/Gallery";
-import { ComingSoon } from "./pages/ComingSoon";
 import { Tracks } from "./pages/Tracks";
 import { TrackDetails } from "./pages/TrackDetails";
 import { Projects } from "./pages/Projects";
 import { Enroll } from "./pages/Enroll";
+import { ScrollToTop } from "../components/atoms/ScrollToTop";
 
 interface ILandingPageProps {}
 
@@ -32,6 +32,7 @@ export const LandingPage: FC<ILandingPageProps> = (props) => {
         minHeight: "100vh",
       }}
     >
+      <ScrollToTop />
       <Appbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
