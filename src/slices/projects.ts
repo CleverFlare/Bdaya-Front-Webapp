@@ -6,7 +6,8 @@ type Project = {
   title: string;
   author: string;
   track: number;
-  images: string[];
+  link: string;
+  thumbnail: string;
 };
 
 export interface ProjectsState {

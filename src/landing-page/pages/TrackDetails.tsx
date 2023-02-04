@@ -25,7 +25,6 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ProjectCard } from "../components/ProjectCard";
-import { ProjectPreviewModal } from "../components/ProjectPreviewModal";
 import { Empty } from "../../illustrations/Empty";
 
 interface ITrackDetailsProps {}
@@ -61,19 +60,6 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
   let filteredProjects = projects.filter(
     (project: any) => String(project.track) === String(id)
   );
-
-  const [trackDetails, setTrackDetails] = useState<any>(null);
-  const [openPreview, setOpenPreview] = useState<boolean>(false);
-
-  function handleOpenPreviewDetails(obj: any) {
-    setTrackDetails(obj);
-    setOpenPreview(true);
-  }
-
-  function handleClosePreviewDetails() {
-    setTrackDetails(null);
-    setOpenPreview(false);
-  }
 
   useEffect(() => {
     console.log(filteredProjects);
@@ -143,9 +129,9 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
                       <ProjectCard
                         title={project.title}
                         author={project.author}
-                        thumbnail={project.images[0]}
+                        thumbnail={project.thumbnail}
                         track={project.track}
-                        onClick={() => handleOpenPreviewDetails(project)}
+                        link={project.link}
                       />
                     </SwiperSlide>
                   );
@@ -154,11 +140,6 @@ export const TrackDetails: FC<ITrackDetailsProps> = (props) => {
             )}
           </>
         </SpecInfo>
-        <ProjectPreviewModal
-          open={openPreview}
-          onClose={() => handleClosePreviewDetails()}
-          {...(trackDetails || {})}
-        />
       </Container>
     </>
   );

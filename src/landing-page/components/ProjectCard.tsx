@@ -1,4 +1,4 @@
-import { Box, Card, CardCover, Chip, Typography } from "@mui/joy";
+import { Box, Card, CardCover, Chip, Link, Typography } from "@mui/joy";
 import { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 import useDynamicTranslation from "../../hooks/useDynamicTranslation";
@@ -8,7 +8,7 @@ interface IProjectCardProps {
   title: string;
   author: string;
   track: string | number;
-  onClick: () => void;
+  link: string;
 }
 
 export const ProjectCard: FC<IProjectCardProps> = (props) => {
@@ -21,16 +21,9 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
 
   return (
-    <Card
-      sx={{ aspectRatio: "1.5 / 1", cursor: "pointer" }}
-      className="direction-agnostic"
-      onClick={props.onClick}
-    >
+    <Card sx={{ aspectRatio: "1.5 / 1" }} className="direction-agnostic">
       <CardCover>
-        <Box
-          component="img"
-          src={props?.thumbnail || thumbnailPlaceholder}
-        ></Box>
+        <Box component="img" src={props?.thumbnail || thumbnailPlaceholder} />
       </CardCover>
       <CardCover
         sx={{
@@ -61,6 +54,7 @@ export const ProjectCard: FC<IProjectCardProps> = (props) => {
               {props.title}
             </Typography>
             <Typography textColor="neutral.300">By {props.author}</Typography>
+            <Link href={props.link} overlay target="_blank"></Link>
           </Box>
         </Box>
       </CardCover>

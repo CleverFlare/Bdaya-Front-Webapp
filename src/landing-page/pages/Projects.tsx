@@ -5,29 +5,16 @@ import { useSelector } from "react-redux";
 import { Empty } from "../../illustrations/Empty";
 import { RootState } from "../../store";
 import { ProjectCard } from "../components/ProjectCard";
-import { ProjectPreviewModal } from "../components/ProjectPreviewModal";
 import { TracksCategories } from "../components/TracksCategories";
 
 export const Projects: FC = () => {
   const tracks = useSelector((state: RootState) => state.tracks.value);
   const projects = useSelector((state: RootState) => state.projects.value);
-  const [trackDetails, setTrackDetails] = useState<any>(null);
-  const [openPreview, setOpenPreview] = useState<boolean>(false);
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState<null | string>(null);
 
   function handleSelectCategory(category: string) {
     setSelectedCategory(category);
-  }
-
-  function handleOpenPreviewDetails(obj: any) {
-    setTrackDetails(obj);
-    setOpenPreview(true);
-  }
-
-  function handleClosePreviewDetails() {
-    setTrackDetails(null);
-    setOpenPreview(false);
   }
 
   let filteredProjects = projects;
@@ -47,11 +34,6 @@ export const Projects: FC = () => {
         spacing={2}
         sx={{ paddingBlock: 2, paddingBottom: 10 }}
       >
-        <ProjectPreviewModal
-          open={openPreview}
-          onClose={() => handleClosePreviewDetails()}
-          {...(trackDetails || {})}
-        />
         <Typography level="h2" fontWeight="bold">
           {t("landing-page.projects-page.title")}
         </Typography>
@@ -72,9 +54,9 @@ export const Projects: FC = () => {
                 <ProjectCard
                   title={project.title}
                   author={project.author}
-                  thumbnail={project.images[0]}
+                  thumbnail={project.thumbnail}
                   track={project.track}
-                  onClick={() => handleOpenPreviewDetails(project)}
+                  link={project.link}
                 />
               </Grid>
             ))}
