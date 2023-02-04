@@ -4,9 +4,9 @@ export const projects = [
     title: "Photo Manipulation",
     author: "Walaa Sakamani",
     track: 3,
-    link: "https://dribbble.com/shots/15091121-Night-Swing",
+    link: "https://www.behance.net/gallery/158084577/Digital-retouchManipulation-VOLVO?tracking_source=search_projects%7CPhoto+Manipulation+",
     thumbnail:
-      "https://weedit.photos/wp-content/uploads/2022/01/retouching-blog.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/ef1bcd158084577.63853f0f87241.jpg",
   },
   {
     id: 2,
